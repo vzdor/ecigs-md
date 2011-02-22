@@ -10,6 +10,8 @@ gem 'mysql2'
 
 gem 'acts-as-taggable-on'
 
+gem 'devise', '~> 1.1.rc0'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

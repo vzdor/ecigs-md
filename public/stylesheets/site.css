@@ -13,7 +13,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 body {
 	margin-top: 20px;
 	background: #000000;
-	text-align: justify;
+	/* text-align: justify; */
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #202020;
@@ -126,7 +126,7 @@ a:hover {
 	text-align: center;
 }
 
-#menu a {
+#menu ul a {
 	display: block;
 	float: left;
 	margin-right: 3px;
@@ -139,9 +139,17 @@ a:hover {
 	color: #110404;
 }
 
-#menu a:hover, #menu .active a {
+#menu ul a:hover, #menu .active a {
 	background: #FFFFFF;
 	color: #110404;
+}
+
+/* user-links */
+
+#user-links {
+  float: right;
+  padding-top: 10px;
+  padding-right: 10px;
 }
 
 /* Search */
