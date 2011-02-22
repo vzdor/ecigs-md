@@ -33,7 +33,7 @@ h3 {
 }
 
 p, blockquote, ul, ol {
-	margin-bottom: 20px;
+	/* margin-bottom: 0px; */
 	line-height: 2em;
 }
 
@@ -353,4 +353,34 @@ a:hover {
 
 #footer a:hover {
 	text-decoration: none;
+}
+
+/* error_messages_for */
+
+#errorExplanation {
+  border: 2px solid red;
+  padding: .5em;
+  margin-bottom: 1em;
+  background-color: #f0f0f0;
+  clear: left;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 13px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  padding-top: 1em;
+  color: #333;
+}
+
+#errorExplanation ul li {
+  list-style: square;
+  margin-left: 10px;
 }

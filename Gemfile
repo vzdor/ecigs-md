@@ -38,3 +38,7 @@ gem 'devise', '~> 1.1.rc0'
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
 end
+
+group :test do
+  gem 'factory_girl_rails'
+end
