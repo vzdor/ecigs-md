@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source 'http://gemcutter.org'
 
 gem 'rails', '3.0.4'
 
@@ -6,6 +7,8 @@ gem 'rails', '3.0.4'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+
+gem 'acts-as-taggable-on'
 
 # Use unicorn as the web server
 # gem 'unicorn'
