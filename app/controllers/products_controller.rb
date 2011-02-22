@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   before_filter :is_admin_filter, :except => [:index, :show]
 
-  before_filter :get_product, :only => [:show, :edit]
+  before_filter :get_product, :only => [:show, :edit, :update]
 
   def index
     @products = Product.find(:all)
