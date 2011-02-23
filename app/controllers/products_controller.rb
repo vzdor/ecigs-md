@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     if tag = params[:tag]
       scope = scope.tagged_with(tag)
     end
-    @products = scope.page(params[:page]).per(2)
+    @products = scope.page(params[:page]).per(40)
   end
 
   def new

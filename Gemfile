@@ -14,6 +14,8 @@ gem 'devise', '~> 1.1.rc0'
 
 gem 'kaminari'
 
+gem "paperclip", "~> 2.3"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

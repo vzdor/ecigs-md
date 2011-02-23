@@ -19,4 +19,8 @@ class Product < ActiveRecord::Base
   def in_stock?
     quantity > 0
   end
+
+  def to_param
+    "#{id}-#{title.scan(/\w+/).join('-')}"
+  end
 end

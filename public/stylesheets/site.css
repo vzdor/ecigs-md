@@ -391,3 +391,9 @@ a:hover {
   padding-bottom: 10px;
   padding-top: 10x;
 }
+
+/* products/show */
+
+#product-page {
+  padding-bottom: 10px;
+}
