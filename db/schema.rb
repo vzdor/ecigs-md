@@ -10,15 +10,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110222121533) do
+ActiveRecord::Schema.define(:version => 20110223112507) do
+
+  create_table "assets", :force => true do |t|
+    t.string   "blob_file_name"
+    t.string   "blob_content_type"
+    t.integer  "blob_file_size"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assets", ["attachable_id", "attachable_type"], :name => "index_assets_on_attachable_id_and_attachable_type"
 
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       :precision => 10, :scale => 0
+    t.decimal  "price",              :precision => 10, :scale => 0
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "taggings", :force => true do |t|

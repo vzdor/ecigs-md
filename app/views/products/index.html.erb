@@ -6,8 +6,12 @@
 
 <div id="product-list">
   <% @products.each do |product| %>
-    <p><%= link_to h(product.title), product_path(product) %><br />
-      <%= h(truncate(product.description)) %></p>
+    <div class="product">
+      <div class="photo"><%= link_to image_tag(product.photo.url(:thumb)), product %></div>
+      <h3><%= link_to h(product.title), product %></h3>
+      <%= h(truncate(product.description, :length => 200)) %>
+    </div>
+    <div class="cut"></div>
   <% end %>
 </div>
 

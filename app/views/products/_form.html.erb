@@ -12,4 +12,21 @@
   <%= f.text_field :quantity %><br />
   <label for="product_tag_list">Tags</label><br />
   <%= f.text_field :tag_list %><br />
+  <label for="product_photo">Photo</label><br />
+  <%= f.file_field :photo %>
+
+  <h3>Assets</h3>
+  <div class="asset-list">
+    <p><%= f.fields_for :assets do |ff| %>
+        <% asset = ff.object %>
+        <% if asset.new_record? %>
+          New asset: <%= ff.file_field :blob %><br />
+        <% else %>
+          <div class="asset">
+            <%= link_to image_tag(asset.blob.url(:thumb)), asset.blob.url(:original) %>
+            Delete? <%= ff.check_box :_destroy %>
+          </div>
+        <% end %>
+      <% end %></p>
+  </div>
 </div>

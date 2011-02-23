@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    3.times { @product.assets.build }
   end
 
   def create
@@ -26,6 +27,10 @@ class ProductsController < ApplicationController
     else
       render :action => "new"
     end
+  end
+
+  def edit
+    3.times { @product.assets.build }
   end
 
   def update

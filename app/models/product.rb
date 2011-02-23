@@ -2,6 +2,11 @@ class Product < ActiveRecord::Base
 
   acts_as_taggable
 
+  has_attached_file :photo, :styles => {
+    :thumb => "150x150#",
+    :large => "600x600>"
+  }
+
   validates_presence_of :title
 
   validates_presence_of :description
@@ -13,6 +18,10 @@ class Product < ActiveRecord::Base
   validates_presence_of :price
 
   validates_numericality_of :price, :greater_than => 0
+
+  has_many :assets, :as => :attachable, :dependent => :destroy
+
+  accepts_nested_attributes_for :assets, :allow_destroy => true
 
   scope :in_stock, :conditions => "quantity > 0", :order => "created_at"
 

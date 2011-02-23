@@ -1,6 +1,6 @@
 <% title("Edit - #{h(@product.title)}") %>
 
-<%= form_for @product do |f| %>
+<%= form_for @product, :html => {:multipart => true} do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
   <%= submit_tag "Update" %> <%= link_to "Cancel", @product %>
 <% end %>

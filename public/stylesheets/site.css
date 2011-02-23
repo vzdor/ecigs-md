@@ -59,6 +59,10 @@ a:hover {
 	color: #FF0000;
 }
 
+.cut {
+  clear: both;
+}
+
 /* Wrapper */
 
 #wrapper {
@@ -390,6 +394,15 @@ a:hover {
 #product-list {
   padding-bottom: 10px;
   padding-top: 10x;
+}
+
+#product-list .photo {
+  float: left;
+  padding-right: 10px;
+}
+
+#product-list .photo img {
+  border: 0;
 }
 
 /* products/show */
