@@ -4,7 +4,8 @@
   <p><%= h(@product.description) %></p>
 
   Price: <%= @product.price %><br />
-  Quantity: <%= @product.quantity %>
+  Quantity: <%= @product.quantity %><br />
+  Tags: <%= h(@product.tag_list) %>
 </div>
 
 <% if is_admin? %>

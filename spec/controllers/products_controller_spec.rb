@@ -59,4 +59,21 @@ describe ProductsController do
     get :index
     response.should be_success
   end
+
+  it "should filter by tag" do
+    product1 = Factory(:ego, :tag_list => "ego")
+    product2 = Factory(:ego, :tag_list => "ego-t")
+
+    get :index, :tag => "ego"
+    response.should be_success
+    results = assigns[:products]
+    results.should_not be_nil
+    results.first.id == product1.id
+
+    get :index, :tag => "ego-t"
+    response.should be_success
+    results = assigns[:products]
+    results.should_not be_nil
+    results.first.id == product2.id
+  end
 end

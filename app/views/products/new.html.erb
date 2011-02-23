@@ -1,4 +1,6 @@
 <% title("Add a new product") %>
 
-<%= render :partial => "form" %>
-<%= submit_tag "Add" %>
+<%= form_for @product do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= submit_tag "Add" %>
+<% end %>

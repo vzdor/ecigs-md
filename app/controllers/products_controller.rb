@@ -6,7 +6,12 @@ class ProductsController < ApplicationController
   before_filter :get_product, :only => [:show, :edit, :update]
 
   def index
-    @products = Product.in_stock.page(params[:page]).per(2)
+    scope = is_admin? ? Product : Product.in_stock
+    @tags = scope.tag_counts_on(:tags)
+    if tag = params[:tag]
+      scope = scope.tagged_with(tag)
+    end
+    @products = scope.page(params[:page]).per(2)
   end
 
   def new
