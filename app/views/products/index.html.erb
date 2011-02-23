@@ -1,0 +1,14 @@
+<% title("Products") %>
+
+<% if is_admin? %>
+  <%= link_to "New product", new_product_path %>
+<% end %>
+
+<div id="product-list">
+  <% @products.each do |product| %>
+    <%= link_to h(product.title), product_path(product) %><br />
+  <% end %>
+</div>
+
+<%= paginate @products %>
+

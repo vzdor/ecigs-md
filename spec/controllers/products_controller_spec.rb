@@ -23,6 +23,11 @@ describe ProductsController do
       response.should redirect_to(product_path(product))
     end
 
+    it "should render edit" do
+      get :edit, :id => Factory(:ego).id
+      response.should be_success
+    end
+
     it "should update a product" do
       product = Factory(:ego)
       Product.should_receive(:find).with(product.id).and_return(product)
@@ -47,6 +52,11 @@ describe ProductsController do
 
   it "should render show" do
     get :show, :id => Factory(:ego).id
+    response.should be_success
+  end
+
+  it "should render index" do
+    get :index
     response.should be_success
   end
 end

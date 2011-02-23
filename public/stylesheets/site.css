@@ -384,3 +384,10 @@ a:hover {
   list-style: square;
   margin-left: 10px;
 }
+
+/* products/index */
+
+#product-list {
+  padding-bottom: 10px;
+  padding-top: 10x;
+}

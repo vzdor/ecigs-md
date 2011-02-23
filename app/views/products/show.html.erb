@@ -1,6 +1,12 @@
-<% title(@product.title) %>
+<% title(h(@product.title)) %>
 
-<p><%= h(@product.description) %></p>
+<div id="product-page">
+  <p><%= h(@product.description) %></p>
 
-Price: <%= @product.price %><br />
-Quantity: <%= @product.quantity %>
+  Price: <%= @product.price %><br />
+  Quantity: <%= @product.quantity %>
+</div>
+
+<% if is_admin? %>
+  <%= link_to "Edit", edit_product_path(@product) %>
+<% end %>

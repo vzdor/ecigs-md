@@ -12,6 +12,8 @@ gem 'acts-as-taggable-on'
 
 gem 'devise', '~> 1.1.rc0'
 
+gem 'kaminari'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

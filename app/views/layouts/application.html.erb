@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Ecigs - <%= h(yield(:title) || "your place to buy e-cigarettes") %></title>
+  <title>Ecigs - <%= yield(:title) || "your place to buy e-cigarettes" %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -18,7 +18,7 @@
       <div id="menu">
 	<ul>
 	  <li class="active"><a href="#">Home</a></li>
-	  <li><a href="#">Products</a></li>
+	  <li><%= link_to "Products", products_path %></li>
 	  <li><a href="#">About</a></li>
 	  <li><a href="#">Contact</a></li>
 	</ul>
@@ -43,9 +43,8 @@
             <p class="<%= name %>"><%= h(msg) %></p>
           <% end %>
 
-          <% title = yield(:title) %>
-          <% if title %>
-            <h2><%= h(title) %></h2>
+          <% if title = yield(:title) %>
+            <h2><%= title %></h2>
             <% end %>
 
           <%= yield %>

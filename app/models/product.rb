@@ -11,5 +11,9 @@ class Product < ActiveRecord::Base
 
   validates_numericality_of :price, :greater_than => 0
 
+  scope :in_stock, :conditions => "quantity > 0", :order => "created_at"
 
+  def in_stock?
+    quantity > 0
+  end
 end

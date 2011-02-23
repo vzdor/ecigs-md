@@ -6,10 +6,7 @@ class ProductsController < ApplicationController
   before_filter :get_product, :only => [:show, :edit, :update]
 
   def index
-    @products = Product.find(:all)
-  end
-
-  def show
+    @products = Product.in_stock.page(params[:page]).per(2)
   end
 
   def new
@@ -19,21 +16,18 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     if @product.save
-      flash[:notice] = 'Product saved successfully.'
-      redirect_to product_path(@product)
+      flash[:notice] = 'Product created successfully.'
+      redirect_to @product
     else
       render :action => "new"
     end
   end
 
-  def edit
-  end
-
   def update
     @product.attributes = params[:product]
     if @product.save
-      flash[:notice] = 'Product saved successfully.'
-      redirect_to product_path(@product)
+      flash[:notice] = 'Product updated successfully.'
+      redirect_to @product
     else
       render :action => "new"
     end
