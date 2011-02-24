@@ -2,5 +2,5 @@
 
 <%= form_for @product, :html => {:multipart => true} do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
-  <%= submit_tag "Update" %> <%= link_to "Cancel", @product %>
+  <p><%= submit_tag "Update" %> <%= link_to "Cancel", @product %></p>
 <% end %>

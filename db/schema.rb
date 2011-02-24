@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223112507) do
+ActiveRecord::Schema.define(:version => 20110224100614) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110223112507) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.integer  "product_id"
   end
 
   create_table "taggings", :force => true do |t|

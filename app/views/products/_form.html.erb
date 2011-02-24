@@ -16,17 +16,32 @@
   <%= f.file_field :photo %>
 
   <h3>Assets</h3>
-  <div class="asset-list">
-    <p><%= f.fields_for :assets do |ff| %>
-        <% asset = ff.object %>
+  <ul class="asset-list">
+    <%= f.fields_for :assets do |ff| %>
+      <% asset = ff.object %>
+      <li>
         <% if asset.new_record? %>
-          New asset: <%= ff.file_field :blob %><br />
+          <%= ff.file_field :blob %><br />
         <% else %>
           <div class="asset">
             <%= link_to image_tag(asset.blob.url(:thumb)), asset.blob.url(:original) %>
             Delete? <%= ff.check_box :_destroy %>
           </div>
         <% end %>
-      <% end %></p>
-  </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>Variations</h3>
+  <ul class="variation-list">
+    <%= f.fields_for :variations do |ff| %>
+      <% product = ff.object %>
+      <li>
+        Title: <%= ff.text_field :title %> Quantity: <%= ff.text_field :quantity, :size => 4 %>
+        <% unless product.new_record? %>
+          Delete? <%= ff.check_box :_destroy %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>

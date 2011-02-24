@@ -1,14 +1,43 @@
 <% title(h(@product.title)) %>
 
+<% if is_admin? %>
+  <%= link_to "Edit", edit_product_path(@product) %>
+<% end %>
+
 <div id="product-page">
   <div class="photo"><%= link_to image_tag(@product.photo.url(:large)), @product %></div>
   <p><%= h(@product.description) %></p>
 
   Price: <%= @product.price %><br />
-  Quantity: <%= @product.quantity %><br />
+  <% if @product.variations.empty? %>
+    Quantity: <%= @product.quantity %><br />
+  <% end %>
   Tags: <%= h(@product.tag_list) %>
+
+  <% if @product.variations.empty? %>
+    <div class="order-links">
+      <%= form_for @product do |f| %>
+        Quantity: <%= f.text_field :quantity, :size => 4 %>
+      <% end %>
+    </div>
+  <% else %>
+    <h3>Variations</h3>
+    <table class="variations" width="80%">
+      <tr>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+      <% @product.variations.each do |product| %>
+        <tr>
+          <td><%= h(product.title) %></td>
+          <td><%= product.quantity %></td>
+          <td><%= text_field_tag :qunaitty, 0, :size => 4 %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+  <%= submit_tag "Add to Cart" %>
 </div>
 
-<% if is_admin? %>
-  <%= link_to "Edit", edit_product_path(@product) %>
-<% end %>

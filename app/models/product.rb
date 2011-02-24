@@ -9,24 +9,32 @@ class Product < ActiveRecord::Base
 
   validates_presence_of :title
 
-  validates_presence_of :description
+  validates_presence_of :description, :unless => :is_variation?
 
   validates_presence_of :quantity
 
   validates_numericality_of :quantity, :greater_than => 0
 
-  validates_presence_of :price
+  validates_presence_of :price, :unless => :is_variation?
 
-  validates_numericality_of :price, :greater_than => 0
+  validates_numericality_of :price, :greater_than => 0, :unless => :is_variation?
 
   has_many :assets, :as => :attachable, :dependent => :destroy
-
   accepts_nested_attributes_for :assets, :allow_destroy => true
 
-  scope :in_stock, :conditions => "quantity > 0", :order => "created_at"
+  has_many :variations, :class_name => 'Product'
+  accepts_nested_attributes_for :variations, :allow_destroy => true, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }
+
+  scope :top, where("product_id IS NULL") # Skip variations
+
+  scope :in_stock, top.where("quantity > 0").order("created_at")
 
   def in_stock?
     quantity > 0
+  end
+
+  def is_variation?
+    !product_id.nil?
   end
 
   def to_param

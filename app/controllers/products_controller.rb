@@ -5,9 +5,10 @@ class ProductsController < ApplicationController
 
   before_filter :get_product, :only => [:show, :edit, :update]
 
+  before_filter :get_tags
+
   def index
-    scope = is_admin? ? Product : Product.in_stock
-    @tags = scope.tag_counts_on(:tags)
+    scope = Product.in_stock # is_admin? ? Product : Product.in_stock
     if tag = params[:tag]
       scope = scope.tagged_with(tag)
     end
@@ -17,6 +18,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     3.times { @product.assets.build }
+    3.times { @product.variations.build }
   end
 
   def create
@@ -31,6 +33,7 @@ class ProductsController < ApplicationController
 
   def edit
     3.times { @product.assets.build }
+    3.times { @product.variations.build }
   end
 
   def update
@@ -39,7 +42,7 @@ class ProductsController < ApplicationController
       flash[:notice] = 'Product updated successfully.'
       redirect_to @product
     else
-      render :action => "new"
+      render :action => "edit"
     end
   end
 
@@ -48,4 +51,9 @@ class ProductsController < ApplicationController
   def get_product
     @product = Product.find(params[:id])
   end
+
+  def get_tags
+    @tags = Product.in_stock.tag_counts_on(:tags) #, :order => "tags.position")
+  end
+
 end
