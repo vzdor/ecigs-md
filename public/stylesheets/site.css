@@ -416,6 +416,16 @@ th {
 }
 
 /* cart/show */
-#cart-page table {
-  padding-bottom: 20px;
+#cart-page table td {
+  padding: 3px 3px 3px 3px;
+}
+
+#cart-page table tr:last-of-type {
+  font-weight: bold;
+  background-color: #d5d5d5;
+}
+
+#cart-continue-order {
+  padding-top: 20px;
+  font-size: 1.3em;
 }

@@ -14,12 +14,12 @@
   <% end %>
   Tags: <%= h(@product.tag_list) %>
 
-  <% form_for @cart, :url => cart_path, :html => {:method => :put} do |f| %>
+  <%= form_for @cart, :url => cart_path, :html => {:method => :put} do |f| %>
     <% if @product.variations.empty? %>
       <div class="order-links">
-        <% f.fields_for :order_lines, OrderLine.new do |ff| %>
+        <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
           <%= ff.hidden_field :product_id, :value => @product.id %>
-          Quantity: <%= ff.text_field :quantity, :size => 4, :value => 0 %>
+          Quantity: <%= ff.text_field :quantity, :size => 4, :value => 1 %>
         <% end %>
       </div>
     <% else %>
@@ -35,7 +35,7 @@
             <td><%= h(product.title) %></td>
             <td><%= product.quantity %></td>
             <td>
-              <% f.fields_for :order_lines, OrderLine.new do |ff| %>
+              <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
                 <%= ff.hidden_field :product_id, :value => product.id %>
                 <%= ff.text_field :quantity, :size => 4, :value => 0 %>
               <% end %>

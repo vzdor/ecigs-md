@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110226072559) do
+ActiveRecord::Schema.define(:version => 20110226153257) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20110226072559) do
   create_table "order_lines", :force => true do |t|
     t.integer  "order_id",                                  :null => false
     t.integer  "product_id",                                :null => false
-    t.decimal  "price",      :precision => 10, :scale => 0
+    t.decimal  "price",      :precision => 10, :scale => 2
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20110226072559) do
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",              :precision => 10, :scale => 0
+    t.decimal  "price",              :precision => 10, :scale => 2
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"

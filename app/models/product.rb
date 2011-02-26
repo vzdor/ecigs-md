@@ -44,7 +44,8 @@ class Product < ActiveRecord::Base
   end
 
   def price
-    pricex = super
-    pricex.nil? && is_variation? ? product.price : pricex
+    price = super
+    price.nil? && is_variation? ? product.price : price
   end
+
 end
