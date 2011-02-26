@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110224100614) do
+ActiveRecord::Schema.define(:version => 20110226072559) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -23,6 +23,23 @@ ActiveRecord::Schema.define(:version => 20110224100614) do
   end
 
   add_index "assets", ["attachable_id", "attachable_type"], :name => "index_assets_on_attachable_id_and_attachable_type"
+
+  create_table "order_lines", :force => true do |t|
+    t.integer  "order_id",                                  :null => false
+    t.integer  "product_id",                                :null => false
+    t.decimal  "price",      :precision => 10, :scale => 0
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.datetime "shipped_on"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", :force => true do |t|
     t.string   "title"

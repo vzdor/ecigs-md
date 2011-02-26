@@ -1,0 +1,46 @@
+<% title("Cart") %>
+
+<div id="cart-page">
+  <%= form_for @cart, :url => cart_path, :html => {:method => :put} do |f| %>
+  <%= f.hidden_field :_replace_order_lines, :value => true %>
+  <table width="100%">
+    <tr>
+      <th>Title</th>
+      <th width="15%">Quantity</th>
+      <th width="15%">Unit price</th>
+      <th>Price</th>
+    </tr>
+    <% position = -1 %>
+    <%= f.fields_for :order_lines do |ff| %>
+      <%= ff.hidden_field :product_id %>
+      <% ol = ff.object %>
+      <tr>
+        <% product = ol.product %>
+        <% if ol.product.is_variation? %>
+          <% product = product.product %>
+        <% end %>
+        <td><%= link_to h(product.title), product %>
+          <% if ol.product.is_variation? %>
+            &nbsp;(<%= h(ol.product.title) %>)
+          <% end %>
+        </td>
+        <td>
+          <%= ff.text_field :quantity, :size => 4 %><br />
+          <small>(<%= link_to "Delete", delete_cart_path(:position => (position += 1)) %>)</small>
+        </td>
+        <td><%= product.price %></td>
+        <td><%= ol.price %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="3">Total:</td>
+      <td><%= @cart.order_lines.map(&:price).sum %></td>
+    </tr>
+  </table>
+  <p><%= submit_tag "Update quantity" %></p>
+  <% end %>
+
+  <div id="cart-continue-order">
+    <%= link_to "Continue shopping", products_path %> or <%= link_to "Place an order" %>
+  </div>
+</div>

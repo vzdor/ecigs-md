@@ -19,6 +19,8 @@ class Product < ActiveRecord::Base
 
   validates_numericality_of :price, :greater_than => 0, :unless => :is_variation?
 
+  belongs_to :product
+
   has_many :assets, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :assets, :allow_destroy => true
 
@@ -39,5 +41,10 @@ class Product < ActiveRecord::Base
 
   def to_param
     "#{id}-#{title.scan(/\w+/).join('-')}"
+  end
+
+  def price
+    pricex = super
+    pricex.nil? && is_variation? ? product.price : pricex
   end
 end

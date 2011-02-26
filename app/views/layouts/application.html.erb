@@ -25,6 +25,7 @@
         <div style="clear: both;"></div>
 
         <div id="user-links">
+          <%= link_to 'Cart', cart_path %>&nbsp;
           <% if user_signed_in? %>
             Signed in as <%= current_user.email %>. Not you?
             <%= link_to "Sign out", destroy_user_session_path %>

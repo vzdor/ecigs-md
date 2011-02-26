@@ -14,30 +14,38 @@
   <% end %>
   Tags: <%= h(@product.tag_list) %>
 
-  <% if @product.variations.empty? %>
-    <div class="order-links">
-      <%= form_for @product do |f| %>
-        Quantity: <%= f.text_field :quantity, :size => 4 %>
-      <% end %>
-    </div>
-  <% else %>
-    <h3>Variations</h3>
-    <table class="variations" width="80%">
-      <tr>
-        <th>Title</th>
-        <th>Quantity</th>
-        <th></th>
-      </tr>
-      <% @product.variations.each do |product| %>
+  <% form_for @cart, :url => cart_path, :html => {:method => :put} do |f| %>
+    <% if @product.variations.empty? %>
+      <div class="order-links">
+        <% f.fields_for :order_lines, OrderLine.new do |ff| %>
+          <%= ff.hidden_field :product_id, :value => @product.id %>
+          Quantity: <%= ff.text_field :quantity, :size => 4, :value => 0 %>
+        <% end %>
+      </div>
+    <% else %>
+      <h3>Variations</h3>
+      <table class="variations" width="80%">
         <tr>
-          <td><%= h(product.title) %></td>
-          <td><%= product.quantity %></td>
-          <td><%= text_field_tag :qunaitty, 0, :size => 4 %></td>
+          <th>Title</th>
+          <th>Quantity</th>
+          <th></th>
         </tr>
-      <% end %>
-    </table>
-  <% end %>
+        <% @product.variations.each do |product| %>
+          <tr>
+            <td><%= h(product.title) %></td>
+            <td><%= product.quantity %></td>
+            <td>
+              <% f.fields_for :order_lines, OrderLine.new do |ff| %>
+                <%= ff.hidden_field :product_id, :value => product.id %>
+                <%= ff.text_field :quantity, :size => 4, :value => 0 %>
+              <% end %>
+            </td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
 
-  <%= submit_tag "Add to Cart" %>
+    <%= submit_tag "Add to Cart" %>
+  <% end %>
 </div>
 

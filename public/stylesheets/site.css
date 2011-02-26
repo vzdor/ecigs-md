@@ -59,6 +59,10 @@ a:hover {
 	color: #FF0000;
 }
 
+th {
+  text-align: left;
+}
+
 .cut {
   clear: both;
 }
@@ -409,4 +413,9 @@ a:hover {
 
 #product-page {
   padding-bottom: 10px;
+}
+
+/* cart/show */
+#cart-page table {
+  padding-bottom: 20px;
 }
