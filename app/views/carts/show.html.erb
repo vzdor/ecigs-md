@@ -5,6 +5,7 @@
   <%= f.hidden_field :_replace_order_lines, :value => true %>
   <table width="100%">
     <tr>
+      <th>#</th>
       <th>Title</th>
       <th width="15%">Quantity</th>
       <th width="15%">Unit price</th>
@@ -19,9 +20,10 @@
         <% if ol.product.is_variation? %>
           <% product = product.product %>
         <% end %>
+        <td><%= ol.product.id %></td>
         <td><%= link_to h(product.title), product %>
           <% if ol.product.is_variation? %>
-            &nbsp;(<%= h(ol.product.title) %>)
+            <br /><%= h(ol.product.title) %>
           <% end %>
         </td>
         <td>
@@ -33,7 +35,8 @@
       </tr>
     <% end %>
     <tr>
-      <td colspan="3">Total:</td>
+      <td colspan="3"></td>
+      <td>Total:</td>
       <td><%= @cart.order_lines.map(&:price).sum %></td>
     </tr>
   </table>
@@ -41,6 +44,6 @@
   <% end %>
 
   <div id="cart-continue-order">
-    <%= link_to "Place an order" %> or <%= link_to "Continue shopping", products_path %>
+    <%= link_to "Place an order", new_order_path %> or <%= link_to "Continue shopping", products_path %>
   </div>
 </div>

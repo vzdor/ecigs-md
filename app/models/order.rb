@@ -12,10 +12,8 @@ class Order < ActiveRecord::Base
 
   attr_accessor :_replace_order_lines
 
-  alias_method :orig_order_lines_attributes=, :order_lines_attributes=
-
-  def order_lines_attributes=(attributes)
-    order_lines.delete_all if _replace_order_lines
-    self.orig_order_lines_attributes = attributes
+  def attributes=(attributes)
+    order_lines.delete_all if attributes[:_replace_order_lines]
+    super(attributes)
   end
 end

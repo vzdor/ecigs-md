@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe OrderLine do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should not be valid without product" do
+    ol = OrderLine.new(:quantity => 10)
+    ol.should_not be_valid
+    ol.product = Factory(:ego)
+    ol.should be_valid
+  end
 end
