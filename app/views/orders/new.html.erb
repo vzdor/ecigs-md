@@ -1,0 +1,29 @@
+<% title("New order") %>
+
+<div id="cart-page">
+  <%= error_messages_for :order %>
+
+  <%= render :partial => "order_lines" %>
+
+  <%= link_to "Go back to Cart", cart_path %>
+
+  <%= form_for @order do |f| %>
+    <div id="delivery-address">
+      <h2>Delivery</h2>
+      <p>Стоимость доставки по Кишиневу: <strong><%= @order.delivery_cost %> лей</strong>.</p>
+      <%= f.fields_for :order_address do |ff| %>
+        <%= ff.label :street %>:<br />
+        <%= ff.text_field :street, :style => "width: 100%" %><br />
+        <%= ff.label :phone_number %>:<br />
+        <%= ff.text_field :phone_number, :size => 10 %><br />
+        <%= ff.label :phone_number2 %>:<br />
+        <%= ff.text_field :phone_number2, :size => 10 %><br />
+      <% end %>
+    </div>
+    <%= f.label :notes %>:<br />
+    <%= f.text_area :notes, :rows => 5, :style => "width: 100%" %>
+
+    <p><%= submit_tag "Submit" %></p>
+  <% end %>
+</div>
+

@@ -1,0 +1,16 @@
+<% title("##{@order.id} order") %>
+
+<div id="cart-page">
+  <%= render :partial => "order_lines" %>
+
+  <% if address = @order.order_address %>
+    <div id="delivery-address">
+      <h2>Delivery address</h2>
+      Street: <%= h(address.street) %><br />
+      Phone number: <%= h(address.phone_number) %><br />
+      <% if address.phone_number2.present? %>
+        Secondary phone number: <%= h(address.phone_number2) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

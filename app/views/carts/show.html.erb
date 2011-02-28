@@ -37,7 +37,7 @@
     <tr>
       <td colspan="3"></td>
       <td>Total:</td>
-      <td><%= @cart.order_lines.map(&:price).sum %></td>
+      <td><%= @cart.total %></td>
     </tr>
   </table>
   <p><%= submit_tag "Update quantity" %></p>

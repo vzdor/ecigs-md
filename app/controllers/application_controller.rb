@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
     @cart ||= Order.new(session[:cart] || {})
   end
 
+  def reset_cart
+    session[:cart] = nil
+  end
+
 end
