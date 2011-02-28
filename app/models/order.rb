@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
   has_one :order_address
   accepts_nested_attributes_for :order_address
 
+  attr_accessible :notes, :order_lines_attributes, :order_address_attributes
+
   def for_cart
     hash = {:notes => notes}
     hash[:order_lines_attributes] = order_lines.collect(&:for_cart)
