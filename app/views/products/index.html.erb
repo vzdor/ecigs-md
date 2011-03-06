@@ -1,7 +1,7 @@
-<% title("Products") %>
+<%# title(h(params[:tag] || 'Products')) %>
 
 <% if is_admin? %>
-  <%= link_to "New product", new_product_path %>
+  <%= link_to "Add a new product", new_product_path %>
 <% end %>
 
 <div id="product-list">
@@ -9,7 +9,7 @@
     <div class="product">
       <div class="photo"><%= link_to image_tag(product.photo.url(:thumb)), product %></div>
       <h3><%= link_to h(product.title), product %></h3>
-      <%= h(truncate(product.description, :length => 200)) %>
+      <%= h(truncate(product.description, :length => 200)) %> <%= link_to 'More..', product %>
     </div>
     <div class="cut"></div>
   <% end %>

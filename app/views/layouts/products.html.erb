@@ -2,7 +2,7 @@
   <li>
     <ul>
       <% @tags.each do |tag| %>
-        <li><%= link_to h(tag.name) + " (#{tag.count})", products_path(:tag => tag.name) %></li>
+        <li <%= 'id=selected' if params[:tag] == tag.name %>><%= link_to h(tag.name) + " (#{tag.count})", products_path(:tag => tag.name) %></li>
       <% end %>
     </ul>
   </li>

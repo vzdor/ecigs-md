@@ -328,6 +328,10 @@ th {
 	background: url(/images/img07.jpg) repeat-x left bottom;
 }
 
+li#selected {
+  font-weight: bold;
+}
+
 #sidebar h2 {
 	margin: 0px;
 	padding: 0px;
