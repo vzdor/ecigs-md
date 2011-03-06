@@ -1,7 +1,38 @@
 <% title("Orders") %>
 
 <div id="orders">
-  <% @orders.each do |order| %>
-    <%= link_to "##{order.id}", order %>&nbsp; <%= order.created_at %><br />
-  <% end %>
+  <table class="order-list" width="100%">
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>State</th>
+      <th>Items</th>
+      <th>Total</th>
+    </tr>
+    <% @orders.each do |order| %>
+      <tr class="<%= cycle('even', 'odd') %>">
+        <td><%= link_to order.id, order %></td>
+        <td><%= order.created_at.short %></td>
+        <td>In Process</td>
+        <td>
+          <ul>
+            <% order.products.each do |p| %>
+              <% product = p %>
+              <% if product.is_variation? %>
+                <% product = product.product %>
+              <% end %>
+              <li>
+                <%= link_to h(product.title), product %>
+                <% if p.is_variation? %>
+                  (<%= h(p.title) %>)
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <%= link_to 'More...', order %>
+        </td>
+        <td><%= order.total_with_delivery %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>

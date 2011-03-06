@@ -4,6 +4,8 @@ class Order < ActiveRecord::Base
   has_many :order_lines
   accepts_nested_attributes_for :order_lines, :allow_destroy => true, :reject_if => proc { |attrs| attrs[:quantity].to_i <= 0 }
 
+  has_many :products, :through => :order_lines
+
   has_one :order_address
   accepts_nested_attributes_for :order_address
 

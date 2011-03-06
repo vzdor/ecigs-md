@@ -42,6 +42,7 @@ p, blockquote, ul, ol {
 }
 
 p {
+
 }
 
 blockquote {
@@ -73,6 +74,14 @@ th {
 
 .cut {
   clear: both;
+}
+
+.even {
+  background-color: #fff;
+}
+
+.odd {
+  background-color: #e0e0e0;
 }
 
 /* Wrapper */
@@ -150,7 +159,7 @@ th {
 	text-decoration: none;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 11px;
+        font-size: 11px;
 	font-weight: bold;
 	color: #110404;
 }
@@ -170,12 +179,22 @@ th {
 
 }
 
-/* user-links */
+/* user-links, sign in, etc, in the header */
 
 #user-links {
   float: right;
   padding-top: 10px;
   padding-right: 10px;
+}
+
+#user-links a {
+    text-decoration: none;
+}
+/* icons: http://cssglobe.com/post/3949/interview-with-logo-designer-luka-pensa/ */
+#user-links a.cart {
+  line-height: 30px;
+  padding: 10px 5px 10px 31px;
+  background: url(/images/icons/cart.jpg) left center no-repeat;
 }
 
 /* Search */
@@ -275,7 +294,6 @@ th {
 .post .byline {
 	float: right;
 	margin-top: -30px;
-	font-size: 12px;
 	color: #5E5E5E;
 }
 
@@ -431,6 +449,11 @@ th {
   border: 0;
 }
 
+/* products/new|edit */
+#product-form {
+  padding-bottom: 10px;
+}
+
 /* products/show */
 
 #product-page .options {
@@ -444,6 +467,13 @@ th {
 
 #product-page .order-lines .button {
   margin-top: 10px;
+}
+
+#product-page .cart-add {
+  /* padding: 10px 5px 10px 31px; */
+  padding-left: 31px;
+  background: url(/images/icons/cart-add.jpg) left center no-repeat;
+  line-height: 1em;
 }
 
 /* cart/show */
@@ -463,4 +493,14 @@ th {
 /* orders/new,show */
 #delivery-address h3 {
   padding-bottom: 10px;
+}
+
+/* orders/index */
+#orders table.order-list {
+  border-collapse: collapse;
+}
+
+#orders table.order-list td, #orders table.order-list th {
+  padding: 3px 3px 15px 3px;
+  vertical-align: top;
 }

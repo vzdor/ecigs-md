@@ -20,10 +20,10 @@
     </div>
     <p><small>* Required fields.</small></p>
 
-    <%= f.label :notes %>:<br />
-    <%= f.text_area :notes, :rows => 5, :style => "width: 100%" %>
+    <p><%= f.label :notes %>:<br />
+      <%= f.text_area :notes, :rows => 5, :style => "width: 100%" %></p>
 
-    <p><%= submit_tag "Submit" %> or <%= link_to "Continue shopping", products_path %></p>
+    <p><%= submit_tag "Submit", :class => "button" %> or <%= link_to "Continue shopping", products_path %></p>
   <% end %>
 </div>
 

@@ -19,16 +19,16 @@
 	<ul>
 	  <li class="active"><%= link_to "Products", products_path %></li>
 	  <li><a href="#">About</a></li>
-	  <li><a href="#">Contact</a></li>
-	  <li><a href="http://blog.ecigs.md">Blog</a></li>
+          <li><a href="http://blog.ecigs.md">Blog</a></li>
+	  <li><a href="#">Contacts</a></li>
 	</ul>
         <div style="clear: both;"></div>
 
         <div id="user-links">
-          <%= link_to 'Cart', cart_path %>&nbsp;
+          <%= link_to 'Cart', cart_path, :class => "cart" %>&nbsp;
           <%= link_to 'Order history', orders_path %>&nbsp;
           <% if user_signed_in? %>
-            Signed in as <%= current_user.email %>. Not you?
+            Signed in as <%= current_user.email %>.
             <%= link_to "Sign out", destroy_user_session_path %>
           <% else %>
             <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
