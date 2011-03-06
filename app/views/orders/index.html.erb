@@ -2,6 +2,6 @@
 
 <div id="orders">
   <% @orders.each do |order| %>
-    <%= link_to "##{order.id}", order %>&nbsp; <%= order.created_at %>
+    <%= link_to "##{order.id}", order %>&nbsp; <%= order.created_at %><br />
   <% end %>
 </div>

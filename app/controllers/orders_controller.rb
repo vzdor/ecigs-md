@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = @cart.clone
-    @order.order_address = OrderAddress.new
+    order_address = current_user.order_addresses.first
+    @order.order_address = order_address ? order_address.clone : OrderAddress.new
   end
 
   def create
@@ -17,7 +18,7 @@ class OrdersController < ApplicationController
     @order.order_address.user = current_user
     if @order.save
       reset_cart
-      flash[:notice] = "Order submitted successfully. Thank you."
+      flash[:notice] = "Order submitted successfully. Thank you. We will contant you shortly."
       redirect_to @order
     else
       render :action => "new"

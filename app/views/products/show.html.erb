@@ -1,51 +1,53 @@
 <% title(h(@product.title)) %>
 
-<% if is_admin? %>
-  <%= link_to "Edit", edit_product_path(@product) %>
-<% end %>
-
 <div id="product-page">
-  <div class="photo"><%= link_to image_tag(@product.photo.url(:large)), @product %></div>
-  <p><%= h(@product.description) %></p>
-
-  Price: <%= @product.price %><br />
-  <% if @product.variations.empty? %>
-    Quantity: <%= @product.quantity %><br />
-  <% end %>
-  Tags: <%= h(@product.tag_list) %>
+  <div class="photo"><%= link_to image_tag(@product.photo.url(:large)), @product.photo.url(:original), :target => "blank" %></div>
+  <div class="description"><%= h(@product.description) %></div>
+  <ul class="options">
+    <li class="price">Price: <%= @product.price %></li>
+    <li>Similar products: <%= tags_links(@product) %></li>
+    <% if is_admin? %>
+      <% if @product.variations.empty? %>
+        <li>Quantity: <%= @product.quantity %></li>
+      <% end %>
+      <li><%= link_to "Edit", edit_product_path(@product) %></li>
+    <% end %>
+  </ul>
 
   <%= form_for @cart, :url => cart_path, :html => {:method => :put} do |f| %>
-    <% if @product.variations.empty? %>
-      <div class="order-links">
-        <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
-          <%= ff.hidden_field :product_id, :value => @product.id %>
-          Quantity: <%= ff.text_field :quantity, :size => 4, :value => 1 %>
-        <% end %>
-      </div>
-    <% else %>
-      <h3>Variations</h3>
-      <table class="variations" width="80%">
-        <tr>
-          <th>Title</th>
-          <th>Quantity</th>
-          <th></th>
-        </tr>
-        <% @product.variations.each do |product| %>
+    <div class="order-lines">
+      <% if @product.variations.empty? %>
+        <div class="order-links">
+          <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
+            <%= ff.hidden_field :product_id, :value => @product.id %>
+            Quantity: <%= ff.text_field :quantity, :size => 4, :value => 1 %>
+          <% end %>
+        </div>
+      <% else %>
+        <h3>Variations</h3>
+        <table class="variations" width="80%">
           <tr>
-            <td><%= h(product.title) %></td>
-            <td><%= product.quantity %></td>
-            <td>
-              <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
-                <%= ff.hidden_field :product_id, :value => product.id %>
-                <%= ff.text_field :quantity, :size => 4, :value => 0 %>
-              <% end %>
-            </td>
-        </tr>
-        <% end %>
-      </table>
-    <% end %>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th></th>
+          </tr>
+          <% @product.variations.each do |product| %>
+            <tr>
+              <td><%= h(product.title) %></td>
+              <td><%= product.quantity %></td>
+              <td>
+                <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
+                  <%= ff.hidden_field :product_id, :value => product.id %>
+                  <%= ff.text_field :quantity, :size => 4, :value => 0 %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
 
-    <%= submit_tag "Add to Cart" %>
+      <%= submit_tag "Add to Cart", :class => "button" %>
+    </div>
   <% end %>
 </div>
 
