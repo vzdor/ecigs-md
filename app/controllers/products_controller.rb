@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
 
   before_filter :get_tags
 
+  layout 'products'
+
   def index
     scope = Product.in_stock # is_admin? ? Product : Product.in_stock
     if tag = params[:tag]
