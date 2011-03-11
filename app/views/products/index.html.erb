@@ -1,4 +1,9 @@
-<%# title(h(params[:tag] || 'Products')) %>
+<% if @products.empty? %>
+  <%= title('404') %>
+  <p>Not products found with that tag.</p>
+<% elsif tag = params[:tag] %>
+  <%= title h(tag) %>
+<% end %>
 
 <% if is_admin? %>
   <%= link_to "Add a new product", new_product_path %>
@@ -10,8 +15,8 @@
       <div class="photo"><%= link_to image_tag(product.photo.url(:thumb)), product %></div>
       <h3><%= link_to h(product.title), product %></h3>
       <%= h(truncate(product.description, :length => 200)) %> <%= link_to 'More..', product %>
+      <div class="cut"></div>
     </div>
-    <div class="cut"></div>
   <% end %>
 </div>
 

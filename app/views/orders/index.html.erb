@@ -1,11 +1,11 @@
-<% title("Orders") %>
+<% title("Order history") %>
 
 <div id="orders">
   <table class="order-list" width="100%">
     <tr>
       <th>#</th>
       <th>Date</th>
-      <th>State</th>
+      <th>Where is my order?</th>
       <th>Items</th>
       <th>Total</th>
     </tr>
@@ -13,7 +13,7 @@
       <tr class="<%= cycle('even', 'odd') %>">
         <td><%= link_to order.id, order %></td>
         <td><%= order.created_at.short %></td>
-        <td>In Process</td>
+        <td>Queued</td>
         <td>
           <ul>
             <% order.products.each do |p| %>

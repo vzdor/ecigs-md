@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :get_cart
 
+  before_filter :set_tab
+
   protected
 
   helper_method :is_admin?
@@ -23,6 +25,10 @@ class ApplicationController < ActionController::Base
 
   def reset_cart
     session[:cart] = nil
+  end
+
+  def set_tab
+    @tab = 'Products'
   end
 
 end

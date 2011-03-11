@@ -33,8 +33,13 @@
     <% end %>
     <tr>
       <td colspan="3"></td>
+      <td><%= link_to 'Delivery' %>:</td>
+      <td><%= @cart.delivery_cost %></td>
+    </tr>
+    <tr>
+      <td colspan="3"></td>
       <td>Total:</td>
-      <td><%= @cart.total %></td>
+      <td><%= @cart.total_with_delivery %></td>
     </tr>
   </table>
   <p><%= submit_tag "Update quantity" %></p>
