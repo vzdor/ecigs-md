@@ -7,8 +7,8 @@
 
   <%= form_for @order do |f| %>
     <div id="delivery-address">
-      <h3>Delivery</h3>
-      <p>Стоимость доставки по Кишиневу: <strong><%= @order.delivery_cost %> лей</strong>.</p>
+      <h3>Delivery address</h3>
+      <p><%= link_to 'Read more on delivery.', delivery_home_path %></p><br />
       <%= f.fields_for :order_address do |ff| %>
         <%= ff.label :street %>: *<br />
         <%= ff.text_field :street, :style => "width: 100%" %><br />

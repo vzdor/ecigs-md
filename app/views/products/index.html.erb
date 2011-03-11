@@ -1,7 +1,4 @@
-<% if @products.empty? %>
-  <%= title('404') %>
-  <p>Not products found with that tag.</p>
-<% elsif tag = params[:tag] %>
+<% if @products.present? && tag = params[:tag] %>
   <%= title h(tag) %>
 <% end %>
 
@@ -19,6 +16,5 @@
     </div>
   <% end %>
 </div>
-
 <%= paginate @products %>
 

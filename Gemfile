@@ -12,6 +12,7 @@ gem 'acts-as-taggable-on'
 
 gem 'devise', '~> 1.1.rc0'
 
+# Pagination
 gem 'kaminari'
 
 gem "paperclip", "~> 2.3"

@@ -63,6 +63,10 @@ a {
 	color: #323B51;
 }
 
+.pagination {
+  font-size: 1.3em;
+}
+
 a:hover {
 	text-decoration: none;
 	color: #FF0000;
@@ -439,6 +443,10 @@ li#selected {
 
 /* products/index */
 
+#product-list {
+    padding: 10px 0 10px 0;
+}
+
 #product-list .product {
   padding-top: 10px;
 }
@@ -506,3 +514,4 @@ li#selected {
   padding: 3px 3px 15px 3px;
   vertical-align: top;
 }
+
