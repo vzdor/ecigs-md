@@ -1,5 +1,6 @@
 module ApplicationHelper
-  def title(page_title)
+  def title(page_title, show_title = true)
+    @show_title = show_title
     content_for(:title) { page_title }
   end
 

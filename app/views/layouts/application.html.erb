@@ -49,7 +49,7 @@
             <p class="<%= name %>"><%= h(msg) %></p>
           <% end %>
 
-          <% if content_for?(:title) %>
+          <% if @show_title && content_for?(:title) %>
             <h2 id="page-title"><%= yield(:title) %></h2>
             <% end %>
 

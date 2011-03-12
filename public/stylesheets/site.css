@@ -176,8 +176,8 @@ th {
 /* buttons */
 
 /* input[type="button"], */ .button {
-  line-height: 35px;
-  height: 35px;
+  line-height: 30px;
+  height: 30px;
   padding-left: 5px;
   padding-right: 5px;
 
@@ -467,23 +467,35 @@ li#selected {
 
 /* products/show */
 
-#product-page .options {
-  padding-bottom: 10px;
-  padding-top: 10px;
+#product-page .photo {
+  float: left;
+  margin-right: 10px;
 }
 
-#product-page .options .price {
+#product-page .price {
+  font-size: 1.2em;
   font-weight: bold;
 }
 
-#product-page .order-lines .button {
-  margin-top: 10px;
+#product-page .variations {
+  padding-bottom: 10px;
 }
 
-#product-page .cart-add {
+#product-page .variations th {
+  font-weight: normal;
+  color: #646464;
+}
+
+/* #product-page .cart-add {
   padding-left: 31px;
   background: url(/images/icons/cart-add.jpg) left center no-repeat;
   line-height: 1em;
+} */
+
+#product-page .description h3 {
+  padding-bottom: 5px;
+  font-weight: normal;
+  color: #646464;
 }
 
 /* cart/show */
