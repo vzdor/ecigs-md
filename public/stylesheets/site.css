@@ -478,10 +478,6 @@ li#selected {
   font-weight: bold;
 }
 
-#product-page .variations {
-  padding-bottom: 10px;
-}
-
 #product-page .variations th {
   font-weight: normal;
   color: #646464;
@@ -492,6 +488,10 @@ li#selected {
   background: url(/images/icons/cart-add.jpg) left center no-repeat;
   line-height: 1em;
 } */
+
+#product-page .description {
+  margin-top: 10px;
+}
 
 #product-page .description h3 {
   padding-bottom: 5px;
