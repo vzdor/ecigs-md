@@ -7,18 +7,6 @@ class Product < ActiveRecord::Base
     :large => "600x600>"
   }
 
-  validates_presence_of :title
-
-  validates_presence_of :description, :unless => :is_variation?
-
-  validates_presence_of :quantity
-
-  validates_numericality_of :quantity, :greater_than => 0
-
-  validates_presence_of :price, :unless => :is_variation?
-
-  validates_numericality_of :price, :greater_than => 0, :unless => :is_variation?
-
   belongs_to :product
 
   has_many :assets, :as => :attachable, :dependent => :destroy
@@ -27,6 +15,17 @@ class Product < ActiveRecord::Base
   has_many :variations, :class_name => 'Product'
   accepts_nested_attributes_for :variations, :allow_destroy => true, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }
 
+  validates_presence_of :title
+
+  validates_presence_of :description, :unless => :is_variation?
+
+  validates_presence_of :quantity, :unless => :has_variations?
+
+  validates_numericality_of :quantity, :greater_than => 0, :unless => :has_variations?
+
+  validates_presence_of :price, :unless => :is_variation?
+
+  validates_numericality_of :price, :greater_than => 0, :unless => :is_variation?
   scope :top, where("product_id IS NULL") # Skip variations
 
   scope :in_stock, top.where("quantity > 0").order("created_at")
@@ -37,6 +36,10 @@ class Product < ActiveRecord::Base
 
   def is_variation?
     !product_id.nil?
+  end
+
+  def has_variations?
+    variations.present?
   end
 
   def to_param
