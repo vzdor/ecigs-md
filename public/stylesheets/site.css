@@ -333,10 +333,6 @@ th {
 	background: url(/images/img07.jpg) repeat-x left bottom;
 }
 
-li#selected {
-  font-weight: bold;
-}
-
 #sidebar h2 {
 	margin: 0px;
 	padding: 0px;
@@ -366,6 +362,10 @@ li#selected {
 
 #sidebar a:hover {
 	text-decoration: underline;
+}
+
+li#selected a {
+  color: #000;
 }
 
 /* Submenu */
@@ -445,7 +445,7 @@ li#selected {
 /* products/index */
 
 #product-list {
-    padding: 10px 0 10px 0;
+    padding: 0px 0 10px 0;
 }
 
 #product-list .product {
