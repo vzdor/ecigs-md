@@ -43,4 +43,11 @@ describe Product do
     product.variations.build
     product.has_variations?.should == true
   end
+
+  it "is_variation?" do
+    product = Product.new
+    product.is_variation?.should == false
+    product.product_id = 1
+    product.is_variation?.should == true
+  end
 end

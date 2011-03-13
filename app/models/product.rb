@@ -35,7 +35,7 @@ class Product < ActiveRecord::Base
   end
 
   def is_variation?
-    !product_id.nil?
+    product_id.present?
   end
 
   def has_variations?
