@@ -36,4 +36,11 @@ describe Product do
   it "top scope should return products, not variations" do
     Product.top.to_sql.should == 'SELECT `products`.* FROM `products` WHERE (product_id IS NULL)'
   end
+
+  it "has_variations?" do
+    product = Product.new
+    product.has_variations?.should == false
+    product.variations.build
+    product.has_variations?.should == true
+  end
 end

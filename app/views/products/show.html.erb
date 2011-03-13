@@ -10,7 +10,7 @@
     <% end %>
     <li>Similar products: <%= tags_links(@product) %></li>
     <li class="price">Price: <%= @product.price %></li>
-    <% if @product.variations.empty? %>
+    <% unless @product.has_variations? %>
       <li>Available: <%= @product.quantity %></li>
       <li>
         <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
@@ -22,7 +22,7 @@
     <% end %>
   </ul>
   <div class="cut"></div>
-  <% unless @product.variations.empty? %>
+  <% if @product.has_variations? %>
     <div class="variations">
       <table width="100%">
         <tr>
