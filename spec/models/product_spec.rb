@@ -6,12 +6,6 @@ describe Product do
     product.should be_valid
   end
 
-  it "should add a new product with variations and filter blank variations" do
-    product = Product.new(:title => "test", :description => "test", :price => 10, :variations_attributes => {0 => {:title => 'test', :quantity => 12, :product_id => 0}, 1 => {:title => ''}})
-    product.should be_valid
-    product.variations.size.should == 1
-  end
-
   it "should accept photo" do
     product = Factory(:ego)
     product.attributes = {:photo => File.open(Rails.root + "public/images/rails.png")}
@@ -25,6 +19,12 @@ describe Product do
     product.assets_attributes = {0 => {:blob => photo}, 1 => {:blob => photo}}
     product.should be_valid
     product.assets.size.should == 2
+  end
+
+  it "should add a new product with variations and filter blank variations" do
+    product = Product.new(:title => "test", :description => "test", :price => 10, :variations_attributes => {0 => {:title => 'test', :quantity => 12, :product_id => 0}, 1 => {:title => ''}})
+    product.should be_valid
+    product.variations.size.should == 1
   end
 
   it "variation should only require title and quantity" do

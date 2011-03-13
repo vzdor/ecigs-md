@@ -33,13 +33,17 @@
         <% @product.variations.each do |product| %>
           <tr>
             <td><%= h(product.title) %></td>
-            <td><%= product.quantity %></td>
-            <td>
-              <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
-              <%= ff.hidden_field :product_id, :value => product.id %>
-              <%= ff.text_field :quantity, :size => 4, :value => 0 %>
-              <% end %>
-            </td>
+            <% if product.in_stock? %>
+              <td><%= product.quantity %></td>
+              <td>
+                <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
+                  <%= ff.hidden_field :product_id, :value => product.id %>
+                  <%= ff.text_field :quantity, :size => 4, :value => 0 %>
+                <% end %>
+              </td>
+            <% else %>
+              <td colspan="2">Out of stock</td>
+            <% end %>
           </tr>
         <% end %>
       </table>

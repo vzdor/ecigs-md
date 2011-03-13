@@ -12,8 +12,9 @@ class Product < ActiveRecord::Base
   has_many :assets, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :assets, :allow_destroy => true
 
+  # you should not delete any of the variations, or you get orders or cart messed up. Instead, just set quantity to 0
   has_many :variations, :class_name => 'Product', :order => 'title'
-  accepts_nested_attributes_for :variations, :allow_destroy => true, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }
+  accepts_nested_attributes_for :variations, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }
 
   validates_presence_of :title
 
@@ -21,7 +22,7 @@ class Product < ActiveRecord::Base
 
   validates_presence_of :quantity, :unless => :has_variations?
 
-  validates_numericality_of :quantity, :greater_than => 0, :unless => :has_variations?
+  validates_numericality_of :quantity, :only_integer => true, :unless => :has_variations?
 
   validates_presence_of :price, :unless => :is_variation?
 

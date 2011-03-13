@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_tab
-    @tab = 'Products'
+    @tab = :products
   end
 
 end

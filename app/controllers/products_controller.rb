@@ -46,6 +46,8 @@ class ProductsController < ApplicationController
       flash[:notice] = 'Product updated successfully.'
       redirect_to @product
     else
+      3.times { @product.assets.build }
+      3.times { @product.variations.build }
       render :action => "edit"
     end
   end

@@ -25,7 +25,7 @@ class Order < ActiveRecord::Base
   end
 
   def delivery_cost
-    25
+    self.class.delivery_cost
   end
 
   def total
@@ -43,5 +43,9 @@ class Order < ActiveRecord::Base
 
   # end
 
-
+  class << self
+    def delivery_cost
+      25
+    end
+  end
 end
