@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   has_many :assets, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :assets, :allow_destroy => true
 
-  has_many :variations, :class_name => 'Product'
+  has_many :variations, :class_name => 'Product', :order => 'title'
   accepts_nested_attributes_for :variations, :allow_destroy => true, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }
 
   validates_presence_of :title
