@@ -27,6 +27,14 @@ h1, h2, h3 {
 	color: #AA2808;
 }
 
+h3 {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+
+}
+
 h1 {
 }
 
@@ -494,7 +502,6 @@ li#selected a {
 }
 
 #product-page .description h3 {
-  padding-bottom: 5px;
   font-weight: normal;
   color: #646464;
 }
@@ -511,12 +518,6 @@ li#selected a {
 #cart-continue-order {
   padding-top: 20px;
   font-size: 1.3em;
-}
-
-/* orders/new,show */
-#delivery-address h3, #notes h3 {
-  padding-bottom: 5px;
-  padding-top: 5px;
 }
 
 /* orders/index */

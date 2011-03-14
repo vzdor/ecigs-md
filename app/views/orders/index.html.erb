@@ -1,38 +1,42 @@
 <% title("Order history") %>
 
 <div id="orders">
-  <table class="order-list" width="100%">
-    <tr>
-      <th>#</th>
-      <th>Date</th>
-      <th>Status</th>
-      <th>Items</th>
-      <th>Total</th>
-    </tr>
-    <% @orders.each do |order| %>
-      <tr class="<%= cycle('even', 'odd') %>">
-        <td><%= link_to order.id, order %></td>
-        <td><%= order.created_at.short %></td>
-        <td><%= order_status(order) %></td>
-        <td>
-          <ul>
-            <% order.products.each do |p| %>
-              <% product = p %>
-              <% if product.is_variation? %>
-                <% product = product.product %>
-              <% end %>
-              <li>
-                <%= link_to h(product.title), product %>
-                <% if p.is_variation? %>
-                  (<%= h(p.title) %>)
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-          <%= link_to 'More...', order %>
-        </td>
-        <td><%= order.total_with_delivery %></td>
+  <% if @order.present? %>
+    <table class="order-list" width="100%">
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Items</th>
+        <th>Total</th>
       </tr>
-    <% end %>
-  </table>
+      <% @orders.each do |order| %>
+        <tr class="<%= cycle('even', 'odd') %>">
+          <td><%= link_to order.id, order %></td>
+          <td><%= order.created_at.short %></td>
+          <td><%= order_status(order) %></td>
+          <td>
+            <ul>
+              <% order.products.each do |p| %>
+                <% product = p %>
+                <% if product.is_variation? %>
+                  <% product = product.product %>
+                <% end %>
+                <li>
+                  <%= link_to h(product.title), product %>
+                  <% if p.is_variation? %>
+                    (<%= h(p.title) %>)
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+            <%= link_to 'More...', order %>
+          </td>
+          <td><%= order.total_with_delivery %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    You do not have any orders.
+  <% end %>
 </div>

@@ -9,11 +9,19 @@ class OrderLine < ActiveRecord::Base
 
   attr_accessible :quantity, :product_id
 
+  before_create :set_unit_price
+
   def for_cart
     {:product_id => product_id, :quantity => quantity}
   end
 
   def price
-    quantity * product.price
+    quantity * (unit_price || product.price)
+  end
+
+  private
+
+  def set_unit_price
+    self.unit_price = product.price
   end
 end
