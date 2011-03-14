@@ -3,9 +3,8 @@
 <div id="cart-page">
   <ul>
     <li>Date: <%= @order.created_at.short %></li>
-    <li>State: In Process</li>
+    <li>State: <%= order_status(@order) %></li>
   </ul>
-  <br />
   <%= render :partial => "order_lines" %>
 
   <% if address = @order.order_address %>
@@ -16,6 +15,13 @@
       <% if address.phone_number2.present? %>
         Secondary phone number: <%= h(address.phone_number2) %>
       <% end %>
+    </div>
+  <% end %>
+
+  <% if @order.notes.present? %>
+    <div id="notes">
+      <h3>Notes</h3>
+      <%= h(@order.notes) %>
     </div>
   <% end %>
 </div>

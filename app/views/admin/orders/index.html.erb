@@ -1,18 +1,20 @@
 <% admin_title('Orders') %>
 
-<table width="100%">
+<table width="100%" id="admin-orders">
   <tr>
     <th>#</th>
     <th>User</th>
     <th>Date</th>
+    <th>Status</th>
     <th></th>
   </tr>
 
   <% @orders.each do |order| %>
-    <tr>
+    <tr class="status<%= order.status %>">
       <td><%= order.id %></td>
       <td><%= order.user.email %></td>
       <td><%= order.created_at.short %></td>
+      <td><%= order_status(order) %></td>
       <td><%= link_to 'View', admin_order_path(order) %></td>
     </tr>
   <% end %>

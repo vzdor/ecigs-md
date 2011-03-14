@@ -9,21 +9,35 @@ class Order < ActiveRecord::Base
   has_one :order_address
   accepts_nested_attributes_for :order_address
 
-  scope :recent, order('created_at')
+  class Status
+    PROCESSING = 0
+    DELIVERY = 1
+    SHIPPED = 2
+    CANCELLED = 3
+
+    CAPTIONS = {
+      PROCESSING => 'Processing',
+      DELIVERY => 'Delivery',
+      SHIPPED => 'Shipped',
+      CANCELLED => 'Canceled'
+    }
+  end
+
+  scope :recent, order('status, created_at desc')
 
   attr_accessible :notes, :order_lines_attributes, :order_address_attributes
 
   def for_cart
-    hash = {:notes => notes}
+    hash = {}
     hash[:order_lines_attributes] = order_lines.collect(&:for_cart)
     hash
   end
 
   attr_accessor :_replace_order_lines
 
-  def attributes=(attributes)
+  def attributes=(attributes, protect = true)
     order_lines.delete_all if attributes[:_replace_order_lines]
-    super(attributes)
+    super(attributes, protect)
   end
 
   def delivery_cost

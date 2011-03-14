@@ -5,7 +5,7 @@
     <tr>
       <th>#</th>
       <th>Date</th>
-      <th>Where is my order?</th>
+      <th>Status</th>
       <th>Items</th>
       <th>Total</th>
     </tr>
@@ -13,7 +13,7 @@
       <tr class="<%= cycle('even', 'odd') %>">
         <td><%= link_to order.id, order %></td>
         <td><%= order.created_at.short %></td>
-        <td>Queued</td>
+        <td><%= order_status(order) %></td>
         <td>
           <ul>
             <% order.products.each do |p| %>

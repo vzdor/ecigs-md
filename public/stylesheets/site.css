@@ -514,8 +514,9 @@ li#selected a {
 }
 
 /* orders/new,show */
-#delivery-address h3 {
-  padding-bottom: 10px;
+#delivery-address h3, #notes h3 {
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 /* orders/index */
@@ -528,3 +529,14 @@ li#selected a {
   vertical-align: top;
 }
 
+/* admin/orders */
+
+#admin-orders td {
+  padding: 2px 2px 2px 2px;
+}
+
+/* new orders */
+
+#admin-orders tr.status0 {
+  background-color: #ccf8bd;
+}
