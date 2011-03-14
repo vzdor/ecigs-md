@@ -7,14 +7,14 @@ describe Product do
   end
 
   it "should accept photo" do
-    product = Factory(:ego)
+    product = Factory(:product)
     product.attributes = {:photo => File.open(Rails.root + "public/images/rails.png")}
     product.should be_valid
     product.reload.photo.file?.should == true
   end
 
   it "should accept multiple assets" do
-    product = Factory(:ego)
+    product = Factory(:product)
     photo = File.open(Rails.root + "public/images/rails.png")
     product.assets_attributes = {0 => {:blob => photo}, 1 => {:blob => photo}}
     product.should be_valid
@@ -28,7 +28,7 @@ describe Product do
   end
 
   it "variation should only require title and quantity" do
-    product = Factory(:ego)
+    product = Factory(:product)
     variation = product.variations.build(:title => "test", :quantity => 10)
     variation.should be_valid
   end

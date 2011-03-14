@@ -24,12 +24,12 @@ describe ProductsController do
     end
 
     it "should render edit" do
-      get :edit, :id => Factory(:ego).id
+      get :edit, :id => Factory(:product).id
       response.should be_success
     end
 
     it "should update a product" do
-      product = Factory(:ego)
+      product = Factory(:product)
       Product.should_receive(:find).with(product.id).and_return(product)
       product.should_receive(:attributes=).with('title' => "Hello")
       product.should_receive(:save).and_return(true)
@@ -47,11 +47,11 @@ describe ProductsController do
 
   it "should not be allowed to edit a product" do
     Product.should_not_receive(:find)
-    put :update, :id => Factory(:ego).id, :product => {:title => "test"}
+    put :update, :id => Factory(:product).id, :product => {:title => "test"}
   end
 
   it "should render show" do
-    get :show, :id => Factory(:ego).id
+    get :show, :id => Factory(:product).id
     response.should be_success
   end
 
@@ -61,8 +61,8 @@ describe ProductsController do
   end
 
   it "should filter by tag" do
-    product1 = Factory(:ego, :tag_list => "ego")
-    product2 = Factory(:ego, :tag_list => "ego-t")
+    product1 = Factory(:product, :tag_list => "ego")
+    product2 = Factory(:product, :tag_list => "ego-t")
 
     get :index, :tag => "ego"
     response.should be_success

@@ -4,8 +4,8 @@ describe CartsController do
   render_views
 
   @@order_options = {'notes' => "test", 'order_lines_attributes' => {
-      0 => {'product_id' => Factory(:ego).id, 'quantity' => 12},
-      1 => {'product_id' => Factory(:ego).id, 'quantity' => 14},
+      0 => {'product_id' => Factory(:product).id, 'quantity' => 12},
+      1 => {'product_id' => Factory(:product).id, 'quantity' => 14},
     }
   }.freeze
 
