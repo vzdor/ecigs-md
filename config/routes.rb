@@ -67,6 +67,11 @@ Ecigs::Application.routes.draw do
 
   resources :orders
 
+  namespace :admin do
+    resources :products
+    resources :orders
+  end
+
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => "products#index"

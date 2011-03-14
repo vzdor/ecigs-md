@@ -9,6 +9,8 @@ class Order < ActiveRecord::Base
   has_one :order_address
   accepts_nested_attributes_for :order_address
 
+  scope :recent, order('created_at')
+
   attr_accessible :notes, :order_lines_attributes, :order_address_attributes
 
   def for_cart

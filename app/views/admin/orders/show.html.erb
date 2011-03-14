@@ -1,0 +1,22 @@
+<%= admin_title("Order ##{@order.id}") %>
+
+
+<div id="cart-page">
+  <ul>
+    <li>Date: <%= @order.created_at.short %></li>
+    <li>State: In Process</li>
+  </ul>
+  <br />
+  <%= render :partial => "/orders/order_lines" %>
+
+  <% if address = @order.order_address %>
+    <div id="delivery-address">
+      <h3>Delivery address</h3>
+      Street: <%= h(address.street) %><br />
+      Phone number: <%= h(address.phone_number) %><br />
+      <% if address.phone_number2.present? %>
+        Secondary phone number: <%= h(address.phone_number2) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
