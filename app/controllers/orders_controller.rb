@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order.order_address.user = current_user
     if @order.save
       reset_cart
-      flash[:notice] = "Order submitted successfully. Thank you. We will contant you shortly."
+      flash[:notice] = t(:order_submitted)
       redirect_to @order
     else
       render :action => "new"

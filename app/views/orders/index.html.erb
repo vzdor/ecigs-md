@@ -1,7 +1,7 @@
 <% title(t(:orders_history)) %>
 
 <div id="orders">
-  <% if @order.present? %>
+  <% if @orders.present? %>
     <table class="order-list" width="100%">
       <tr>
         <th>#</th>
@@ -23,7 +23,7 @@
                   <% product = product.product %>
                 <% end %>
                 <li>
-                  <%= link_to h(product.title), product %>
+                  <%= link_to h(product.title), order %>
                   <% if p.is_variation? %>
                     (<%= h(p.title) %>)
                   <% end %>

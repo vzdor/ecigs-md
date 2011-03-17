@@ -1,0 +1,9 @@
+ru:
+  errors:
+    template:
+      header:
+        one: "В связи с ошибкой {{model}} не может быть сохранен"
+        # other: "{{count}} errors prohibited this {{model}} from being saved"
+        other: "Не смог сохранить {{model}}, так-как есть ошибки"
+      # The variable :count is also available
+      body: "Следующие поля были не заполнены или неверен формат данных:"

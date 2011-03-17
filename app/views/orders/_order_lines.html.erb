@@ -1,10 +1,10 @@
 <table width="100%">
   <tr>
     <th width="2%">#</th>
-    <th>Title</th>
-    <th width="15%">Quantity</th>
-    <th width="15%">Unit price</th>
-    <th>Price</th>
+    <th><%= t(:title) %></th>
+    <th width="15%"><%= t(:quantity) %></th>
+    <th width="15%"><%= t(:unit_price) %></th>
+    <th><%= t(:price) %></th>
   </tr>
   <% @order.order_lines.each do |ol| %>
     <tr>
@@ -25,12 +25,12 @@
   <% end %>
   <tr>
     <td colspan="3"></td>
-    <td>Delivery (<%= link_to '?', delivery_home_path %>):</td>
+    <td><%= t(:delivery) %> (<%= link_to '?', delivery_home_path %>):</td>
     <td><%= @order.delivery_cost %></td>
   </tr>
   <tr>
     <td colspan="3"></td>
-    <td>Total:</td>
+    <td><%= t(:total) %>:</td>
     <td><%= @order.total_with_delivery %></td>
   </tr>
 </table>

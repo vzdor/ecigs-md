@@ -11,7 +11,7 @@
     <div class="product">
       <div class="photo"><%= link_to image_tag(product.photo.url(:thumb)), product %></div>
       <h3><%= link_to h(product.title), product %></h3>
-      <%= h(truncate(product.description, :length => 200)) %> <%= link_to 'More..', product %>
+      <%= h(truncate(product.description, :length => 200)) %> <%= link_to t(:more), product %>
       <div class="cut"></div>
     </div>
   <% end %>

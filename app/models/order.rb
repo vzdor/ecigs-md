@@ -16,10 +16,10 @@ class Order < ActiveRecord::Base
     CANCELLED = 3
 
     CAPTIONS = {
-      PROCESSING => 'Processing',
-      DELIVERY => 'Delivery',
-      SHIPPED => 'Shipped',
-      CANCELLED => 'Canceled'
+      PROCESSING => :processing,
+      DELIVERY => :delivery,
+      SHIPPED => :shipped,
+      CANCELLED => :canceled
     }
   end
 

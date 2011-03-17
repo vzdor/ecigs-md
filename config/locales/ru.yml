@@ -16,7 +16,7 @@ ru:
   # cart
   the_cart_is_empty: Корзина пуста
   place_an_order: Разместить заказ
-  continue_shopping: Заказать что-то еще
+  continue_shopping: Вернуться к списку товаров
   title: Наименование
   unit_price: Цена за единицу
   update_quantity: Обновить количество
@@ -31,4 +31,26 @@ ru:
   product_description: Описание продукта
   add_to_cart: Купить
   # orders
+  new_order: Новый заказ
+  delivery_address: Адрес доставки
+  more_on_delivery: Больше информации о доставке
   you_do_not_have_any_orders: Вы пока еще ничего не заказывали
+  required_fields: Необходиме данные
+  helpers:
+    label:
+      order:
+        street: Улица
+        phone_number: Телефон
+        phone_number2: Дополнительный телефон
+        notes: Примичание
+  submit: Заказать!
+  order_submitted: Заказ принят. Скоро мы с вами свяжемся. Спасибо.
+  order_num: "Заказ №%{num}"
+  order_date: Дата
+  status: Статус
+  notes: Примичание
+  processing: Обрабатывается
+  shipped: Доаставлен
+  cancelled: Отменен
+  items: Вещи
+  more: Далее

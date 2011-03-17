@@ -1,4 +1,4 @@
-<% title("New order") %>
+<% title(t(:new_order)) %>
 
 <div id="cart-page">
   <%= error_messages_for :order %>
@@ -7,23 +7,23 @@
 
   <%= form_for @order do |f| %>
     <div id="delivery-address">
-      <h3>Delivery address</h3>
-      <p><%= link_to 'Read more on delivery.', delivery_home_path %></p><br />
+      <h3><%= t(:delivery_address) %></h3>
+      <p><%= link_to t(:more_on_delivery), delivery_home_path %>.</p><br />
       <%= f.fields_for :order_address do |ff| %>
-        <%= ff.label :street %>: *<br />
+        <%= label :order, :street %>: *<br />
         <%= ff.text_field :street, :style => "width: 100%" %><br />
-        <%= ff.label :phone_number %>: *<br />
+        <%= label :order, :phone_number %>: *<br />
         <%= ff.text_field :phone_number, :size => 10 %><br />
-        <%= ff.label :phone_number2 %>:<br />
+        <%= label :order, :phone_number2 %>:<br />
         <%= ff.text_field :phone_number2, :size => 10 %><br />
       <% end %>
     </div>
-    <p><small>* Required fields.</small></p>
+    <p><small>* <%= t(:required_fields) %>.</small></p>
 
-    <p><%= f.label :notes %>:<br />
+    <p><%= label :order, :notes %>:<br />
       <%= f.text_area :notes, :rows => 5, :style => "width: 100%" %></p>
 
-    <p><%= submit_tag "Submit", :class => "button" %> or <%= link_to "Continue shopping", products_path %></p>
+    <p><%= submit_tag t(:submit), :class => "button" %> <%= link_to t(:continue_shopping), products_path %></p>
   <% end %>
 </div>
 
