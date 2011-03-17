@@ -1,14 +1,14 @@
-<% title("Order history") %>
+<% title(t(:orders_history)) %>
 
 <div id="orders">
   <% if @order.present? %>
     <table class="order-list" width="100%">
       <tr>
         <th>#</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Items</th>
-        <th>Total</th>
+        <th><%= t(:date) %></th>
+        <th><%= t(:status) %></th>
+        <th><%= t(:items) %></th>
+        <th><%= t(:total) %></th>
       </tr>
       <% @orders.each do |order| %>
         <tr class="<%= cycle('even', 'odd') %>">
@@ -30,13 +30,13 @@
                 </li>
               <% end %>
             </ul>
-            <%= link_to 'More...', order %>
+            <%= link_to t(:more) + '...', order %>
           </td>
           <td><%= order.total_with_delivery %></td>
         </tr>
       <% end %>
     </table>
   <% else %>
-    You do not have any orders.
+    <%= t(:you_do_not_have_any_orders) %>.
   <% end %>
 </div>

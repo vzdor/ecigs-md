@@ -8,15 +8,15 @@
     <% if is_admin? %>
       <li><%= link_to "Edit", edit_product_path(@product) %></li>
     <% end %>
-    <li>Similar products: <%= tags_links(@product) %></li>
-    <li class="price">Price: <%= @product.price %></li>
+    <li><%= t(:similar_products) %>: <%= tags_links(@product) %></li>
+    <li class="price"><%= t(:price) %>: <%= @product.price %></li>
     <% unless @product.has_variations? %>
-      <li>Available: <%= @product.quantity %></li>
+      <li><%= t(:available) %>: <%= @product.quantity %></li>
       <li>
         <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
           <%= ff.hidden_field :product_id, :value => @product.id %>
-          Quantity: <%= ff.text_field :quantity, :size => 4, :value => 1 %>
-          <%= submit_tag "Add to Cart", :class => "button cart-add" %>
+          <%= t(:quantity) %>: <%= ff.text_field :quantity, :size => 4, :value => 1 %>
+          <%= submit_tag t(:add_to_cart), :class => "button cart-add" %>
         <% end %>
       </li>
     <% end %>
@@ -26,9 +26,9 @@
     <div class="variations">
       <table width="100%">
         <tr>
-          <th>Title</th>
-          <th>Available</th>
-          <th>Quantity</th>
+          <th><%= t(:title) %></th>
+          <th><%= t(:available) %></th>
+          <th><%= t(:quantity) %></th>
         </tr>
         <% @product.variations.each do |product| %>
           <tr>
@@ -47,12 +47,12 @@
           </tr>
         <% end %>
       </table>
-      <%= submit_tag "Add to Cart", :class => "button cart-add" %>
+      <%= submit_tag t(:add_to_cart), :class => "button cart-add" %>
     </div>
   <% end %>
 
   <div class="description">
-    <h3>Product Description</h3>
+    <h3><%= t(:product_description) %></h3>
     <%= h(@product.description) %>
   </div>
   <% end %>

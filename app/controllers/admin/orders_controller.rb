@@ -9,7 +9,7 @@ class Admin::OrdersController < AdminController
     @order.send(:attributes=, params[:order], false)
     if @order.save
       flash[:notice] = "Order updated successfully."
-      redirect_to admin_order_path(@order)
+      redirect_to admin_orders_path
     else
       render :action => "show"
     end

@@ -1,0 +1,34 @@
+ru:
+  # top tabs
+  the_shop: Магазин
+  delivery_payment: Доставка и оплата
+  contacts: Контакты
+  blog: Блог
+  cart: Корзина
+  orders_history: Мои заказы
+  sign_in: Войти
+  signed_in_as: Вошли как
+  sign_up: Зарегестрироваться
+  sign_out: Выйти
+  or: или
+  # home/delivery
+  payment: Оплата
+  # cart
+  the_cart_is_empty: Корзина пуста
+  place_an_order: Разместить заказ
+  continue_shopping: Заказать что-то еще
+  title: Наименование
+  unit_price: Цена за единицу
+  update_quantity: Обновить количество
+  delivery: Доставка
+  total: Всего
+  delete: Удалить
+  # products
+  similar_products: Схожие товары
+  price: Цена
+  available: Доступно
+  quantity: Количество
+  product_description: Описание продукта
+  add_to_cart: Купить
+  # orders
+  you_do_not_have_any_orders: Вы пока еще ничего не заказывали

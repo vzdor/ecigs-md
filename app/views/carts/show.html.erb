@@ -1,13 +1,13 @@
-<% title("Cart") %>
+<% title(t(:cart)) %>
 
 <div id="cart-page">
   <% if @cart.order_lines.present? %>
     <%= render :partial => "order_lines_form" %>
   <% else %>
-    The cart is empty.
+    <%= t(:the_cart_is_empty) %>.
   <% end %>
 
   <div id="cart-continue-order">
-    <%= link_to "Place an order", new_order_path %> or <%= link_to "Continue shopping", products_path %>
+    <%= link_to t(:place_an_order), new_order_path %> <%= t(:or) %> <%= link_to t(:continue_shopping), products_path %>
   </div>
 </div>
