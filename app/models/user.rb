@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   has_many :orders, :order => "id desc"
 
   has_many :order_addresses
+
+  def display_name
+    email.split('@').first + '@..'
+  end
 end

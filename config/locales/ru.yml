@@ -6,9 +6,10 @@ ru:
   blog: Блог
   cart: Корзина
   orders_history: Мои заказы
+  is_new_user: Новый пользователь?
   sign_in: Войти
-  signed_in_as: Вошли как
-  sign_up: Зарегестрироваться
+  signed_in_as: Вы вошли как
+  sign_up: Зарегистрироваться
   sign_out: Выйти
   or: или
   # home/delivery
@@ -43,6 +44,10 @@ ru:
         phone_number: Телефон
         phone_number2: Дополнительный телефон
         notes: Примичание
+      user: # devise
+        remember_me: Запомнить меня
+        password: Пароль
+        password_confirmation: Подтвердите пароль
   submit: Заказать!
   order_submitted: Заказ принят. Скоро мы с вами свяжемся. Спасибо.
   order_num: "Заказ №%{num}"
@@ -54,3 +59,6 @@ ru:
   cancelled: Отменен
   items: Вещи
   more: Далее
+  # devise/views
+  forgot_password: Забыли пароль?
+  send_me_password_recovery_instruction: Выслать инструкию по восстановлению пароля

@@ -25,10 +25,10 @@
           <%= link_to t(:cart), cart_path, :class => "cart" %>&nbsp;
           <% if user_signed_in? %>
             <%= link_to t(:orders_history), orders_path %>&nbsp;
-            <%= t(:signed_in_as) %> <%= current_user.email %>.
+            <%= t(:signed_in_as) %> <%= current_user.display_name %>.
             <%= link_to t(:sign_out), destroy_user_session_path %>
           <% else %>
-            <%= link_to t(:sign_up), new_user_registration_path %> <%= t(:or) %> <%= link_to t(:sign_in), new_user_session_path %>
+            <%= t(:is_new_user) %> <%= link_to t(:sign_up), new_user_registration_path %> <%= t(:or) %> <%= link_to t(:sign_in), new_user_session_path %>
           <% end %>
         </div>
       </div>
