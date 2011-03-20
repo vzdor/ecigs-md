@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   remote: http://gemcutter.org/
   specs:
+    RedCloth (4.2.3)
     abstract (1.0.0)
     actionmailer (3.0.4)
       actionpack (= 3.0.4)
@@ -102,6 +103,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   acts-as-taggable-on
   devise (~> 1.1.rc0)
   factory_girl_rails

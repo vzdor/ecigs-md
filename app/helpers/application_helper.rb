@@ -13,4 +13,8 @@ module ApplicationHelper
       content_tag(:li, link_to(h(I18n.t(title)), path, :class => css_class), :class => css_class)
     end.join.html_safe
   end
+
+  def textilize(text)
+    RedCloth.new(text).to_html.html_safe unless text.blank?
+  end
 end

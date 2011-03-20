@@ -17,6 +17,8 @@ gem 'kaminari'
 
 gem "paperclip", "~> 2.3"
 
+gem 'RedCloth'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

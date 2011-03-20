@@ -4,6 +4,6 @@ module OrdersHelper
   end
 
   def order_status_select(form)
-    form.select(:status, Order::Status::CAPTIONS.map { |k, v| [t(v), t] })
+    form.select(:status, Order::Status::CAPTIONS.map { |k, v| [t(v), k] })
   end
 end

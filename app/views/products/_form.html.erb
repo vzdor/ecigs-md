@@ -4,8 +4,10 @@
 <div id="product-form">
   <label for="product_title">Title</label><br />
   <%= f.text_field :title, :style => "width: 100%" %><br />
-  <label for="product_description">Description</label><br />
+  <%= f.label :description %><br />
   <%= f.text_area :description, :size => "80x20", :style => "width: 100%" %><br />
+  <%= f.label :summary %><br />
+  <%= f.text_area :summary, :size => "80x5", :style => "width: 100%" %>
   <label for="product_tag_list">Tags</label><br />
   <%= f.text_field :tag_list, :style => "width: 100%" %><br />
   <label for="product_price">Price</label><br />

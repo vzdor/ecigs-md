@@ -4,7 +4,7 @@
   <%= form_for @order, :url => admin_order_path(@order) do |f| %>
     <ul>
       <li>Date: <%= @order.created_at.short %></li>
-      <li>State: <%= order_status_select(f) %></li>
+      <li>Status: <%= order_status_select(f) %></li>
     </ul>
     <%= render :partial => "/orders/order_lines" %>
 

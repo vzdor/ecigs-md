@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
       PROCESSING => :processing,
       DELIVERY => :delivery,
       SHIPPED => :shipped,
-      CANCELLED => :canceled
+      CANCELLED => :cancelled
     }
   end
 
