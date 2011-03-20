@@ -57,7 +57,11 @@ Ecigs::Application.routes.draw do
 
   resource :user
 
-  resources :products
+  resources :products do
+    collection do
+      get :tagged, :path => '/tagged/:tag', :to => "products#index"
+    end
+  end
 
   resource :cart do
     collection do
