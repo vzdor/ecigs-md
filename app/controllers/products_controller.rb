@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
   end
 
   def get_tags
-    @tags = Product.in_stock.tag_counts_on(:tags) #, :order => "tags.position")
+    @tags = Product.top.tag_counts_on(:tags)
   end
 
 end
