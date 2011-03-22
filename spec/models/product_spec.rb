@@ -50,4 +50,11 @@ describe Product do
     product.product_id = 1
     product.is_variation?.should == true
   end
+
+  it "short_summary" do
+    product = Product.new(:description => 'test')
+    product.short_summary.should == product.description
+    product.summary = 'test summary'
+    product.short_summary.should == product.summary
+  end
 end

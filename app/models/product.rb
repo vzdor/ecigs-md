@@ -52,4 +52,8 @@ class Product < ActiveRecord::Base
     price.nil? && is_variation? ? product.price : price
   end
 
+  def short_summary
+    summary.present? ? summary : description
+  end
+
 end
