@@ -469,6 +469,10 @@ li#selected a {
   border: 0;
 }
 
+p.out-of-stock {
+  color: red;
+}
+
 /* products/new|edit */
 #product-form {
   padding-bottom: 10px;
