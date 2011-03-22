@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   layout 'products'
 
   def index
-    scope = Product.in_stock # is_admin? ? Product : Product.in_stock
+    scope = Product.top
     if tag = params[:tag]
       scope = scope.tagged_with(tag)
     end

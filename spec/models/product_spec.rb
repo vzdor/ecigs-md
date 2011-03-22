@@ -34,7 +34,7 @@ describe Product do
   end
 
   it "top scope should return products, not variations" do
-    Product.top.to_sql.should == 'SELECT `products`.* FROM `products` WHERE (product_id IS NULL)'
+    Product.top.to_sql.should == 'SELECT `products`.* FROM `products` WHERE (product_id IS NULL) ORDER BY created_at'
   end
 
   it "has_variations?" do

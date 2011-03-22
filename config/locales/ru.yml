@@ -31,6 +31,8 @@ ru:
   quantity: Количество
   product_description: Описание продукта
   add_to_cart: Купить
+  out_of_stock: Нет в наличии
+  let_us_know_if_you_want_the_product: Напишите нам для того, что бы узнать дату поступления
   # orders
   new_order: Новый заказ
   delivery_address: Адрес доставки

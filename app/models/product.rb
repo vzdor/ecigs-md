@@ -27,9 +27,9 @@ class Product < ActiveRecord::Base
   validates_presence_of :price, :unless => :is_variation?
 
   validates_numericality_of :price, :greater_than => 0, :unless => :is_variation?
-  scope :top, where("product_id IS NULL") # Skip variations
+  scope :top, where("product_id IS NULL").order("created_at") # Skip variations
 
-  scope :in_stock, top.where("quantity > 0").order("created_at")
+  scope :in_stock, top.where("quantity > 0")
 
   def in_stock?
     quantity > 0
