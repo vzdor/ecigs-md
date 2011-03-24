@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Ecigs - <%= content_for?(:title) ? yield(:title) : "wowow e-cigarettes" %></title>
+  <title>Ecigs - <%= content_for?(:title) ? yield(:title) : "электронные сигареты, жидкость и вообще" %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -61,6 +61,7 @@
     </div>
     <!-- end div#page -->
     <div id="footer">
+      <p><strong class="warning">ACHTUNG!</strong> Вам должно быть 18 лет или больше. Никто не утверждает, что 1) электронные сигареты помогут вам бросить курить 2) как и то, что они безопасны для здоровья.</p>
       <p id="legal">Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
     </div>
     <!-- end div#footer -->
