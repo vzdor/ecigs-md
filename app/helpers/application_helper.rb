@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module ApplicationHelper
   def title(page_title, show_title = true)
     @show_title = show_title
@@ -16,5 +17,9 @@ module ApplicationHelper
 
   def textilize(text)
     RedCloth.new(text).to_html.html_safe unless text.blank?
+  end
+
+  def local_price(price, show_currency = false)
+    (show_currency ? "#{price} лей" : price.to_s).html_safe
   end
 end

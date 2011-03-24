@@ -61,7 +61,7 @@ class Order < ActiveRecord::Base
 
   class << self
     def delivery_cost
-      25
+      25.0
     end
   end
 end

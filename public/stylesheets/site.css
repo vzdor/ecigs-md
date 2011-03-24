@@ -490,6 +490,11 @@ p.out-of-stock {
   font-weight: bold;
 }
 
+#product-page .price span {
+  color: #646464;
+  font-weight: normal;
+}
+
 #product-page .variations th {
   font-weight: normal;
   color: #646464;

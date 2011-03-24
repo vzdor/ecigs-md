@@ -9,7 +9,7 @@
       <li><%= link_to "Edit", edit_product_path(@product) %></li>
     <% end %>
     <li><%= t(:similar_products) %>: <%= tags_links(@product) %></li>
-    <li class="price"><%= t(:price) %>: <%= @product.price %></li>
+    <li class="price"><%= t(:price) %>: <%= product_price(@product) %></li>
     <% unless @product.has_variations? %>
       <% if @product.in_stock? %>
         <li><%= t(:available) %>: <%= @product.quantity %></li>
