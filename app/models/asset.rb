@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
   has_attached_file :blob, :styles => {
-    :thumb => "100x100#",
+    :thumb => "70x70#",
     :large => "600x600>"
   }
 

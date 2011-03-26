@@ -1,7 +1,7 @@
 <% title(h(@product.title), false) %>
 
 <div id="product-page">
-  <div class="photo"><%= link_to image_tag(@product.photo.url(:thumb)), @product.photo.url(:original), :target => "blank" %></div>
+  <div class="photo"><%= link_to image_tag(@product.photo.url(:thumb)), @product.photo.url(:original), :rel => 'lightbox' %></div>
   <h2><%= yield(:title) %></h2>
   <%= form_for @cart, :url => cart_path, :html => {:method => :put} do |f| %>
   <ul>
@@ -26,6 +26,16 @@
     <% end %>
   </ul>
   <div class="cut"></div>
+
+  <% if @product.assets.present? %>
+    <div class="assets">
+      <% @product.assets.each do |asset| %>
+        <div class="photo"><%= link_to image_tag(asset.blob.url(:thumb)), asset.blob.url(:large), :rel => "lightbox[assets]" %></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="cut"></div>
+
   <% if @product.has_variations? %>
     <div class="variations">
       <table width="100%">
@@ -61,6 +71,6 @@
     <h3><%= t(:product_description) %></h3>
     <%= textilize(@product.description) %>
   </div>
-  <% end %>
+  <% end # /form %>
 </div>
 
