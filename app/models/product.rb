@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
 
   has_attached_file :photo, :styles => {
     :thumb => "150x150#",
-    :large => "600x600>"
+    :large => "700x700>"
   }
 
   belongs_to :product
