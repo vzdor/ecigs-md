@@ -52,6 +52,7 @@ Ecigs::Application.routes.draw do
     collection do
       get :delivery
       get :contacts
+      get :faq
     end
   end
 

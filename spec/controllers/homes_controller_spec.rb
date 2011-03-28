@@ -17,4 +17,9 @@ describe HomesController do
     get :delivery
     response.should be_success
   end
+
+  it "should render faq" do
+    get :faq
+    response.should be_success
+  end
 end

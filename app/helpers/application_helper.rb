@@ -9,7 +9,7 @@ module ApplicationHelper
     [[:products, :the_shop, products_path],
      [:delivery, :delivery_payment, delivery_home_path],
      [:contacts, :contacts, contacts_home_path],
-     [:faq, :faq, 'http://www.ecigtalk.ru/forum/f14/t3366.html'],
+     [:faq, :faq, faq_home_path]
      # [:blog, :blog, 'http://blog.ecigs.md']
     ].collect do |k, title, path|
       css_class = 'active' if k == @tab
