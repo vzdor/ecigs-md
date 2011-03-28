@@ -8,9 +8,6 @@
   <% end %>
 
   <div id="cart-continue-order">
-    <% if user_signed_in? %>
-      <%= link_to t(:place_an_order), new_order_path %> <%= t(:or) %>
-    <% end %>
-    <%= link_to t(:continue_shopping), products_path %>
+    <%= link_to t(:place_an_order), new_order_path %> <%= t(:or) %> <%= link_to t(:continue_shopping), products_path %>
   </div>
 </div>
