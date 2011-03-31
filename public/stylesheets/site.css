@@ -356,8 +356,8 @@ th {
 }
 
 #sidebar h3 {
-	font-size: 77%;
-	color: #110404;
+  font-weight: normal;
+  color: #646464;
 }
 
 #sidebar p {
@@ -471,6 +471,10 @@ li#selected a {
 
 #product-list .photo img {
   border: 0;
+}
+
+#product-list .product h3 a {
+  text-decoration: none;
 }
 
 p.out-of-stock {

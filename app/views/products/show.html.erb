@@ -1,7 +1,7 @@
 <% title(h(@product.title), false) %>
 
 <div id="product-page">
-  <div class="photo"><%= link_to image_tag(@product.photo.url(:thumb)), @product.photo.url(:large), :rel => 'lightbox' %></div>
+  <div class="photo"><%= link_to image_tag(@product.photo.url(:thumb)), @product.photo.url(:large), :rel => 'lightbox[photos]' %></div>
   <h2><%= yield(:title) %></h2>
   <%= form_for @cart, :url => cart_path, :html => {:method => :put} do |f| %>
   <ul>
@@ -30,7 +30,7 @@
   <% if @product.assets.present? %>
     <div class="assets">
       <% @product.assets.each do |asset| %>
-        <div class="photo"><%= link_to image_tag(asset.blob.url(:thumb)), asset.blob.url(:large), :rel => "lightbox[assets]" %></div>
+        <div class="photo"><%= link_to image_tag(asset.blob.url(:thumb)), asset.blob.url(:large), :rel => "lightbox[photos]" %></div>
       <% end %>
     </div>
   <% end %>
