@@ -32,7 +32,7 @@ class Product < ActiveRecord::Base
   scope :in_stock, top.where("quantity > 0")
 
   def in_stock?
-    quantity > 0
+    quantity.to_i > 0
   end
 
   def is_variation?
