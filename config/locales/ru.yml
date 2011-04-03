@@ -58,6 +58,10 @@ ru:
         remember_me: Запомнить меня
         password: Пароль
         password_confirmation: Подтвердите пароль
+  views:
+    pagination:
+      next: Далее
+      previous: Назад
   submit: Разместить заказ
   order_submitted: Заказ принят. Скоро мы с вами свяжемся. Спасибо
   order_num: "Заказ №%{num}"
