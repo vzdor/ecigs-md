@@ -2,10 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Ecigs - <%= content_for?(:title) ? yield(:title) : "электронные сигареты, жидкость в Молдове" %></title>
+  <title>ecigs.md - <%= content_for?(:title) ? yield(:title) : "электронные сигареты, жидкость в Молдове" %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :all %>
   <%= csrf_meta_tag %>
+
+  <link rel="icon" href="/images/favicon.png" sizes="32x32" />
+  <link rel="shortcut icon" href="/images/favicon.ico" />
 
   <%= render :partial => "/layouts/google_analytics" %>
 </head>
@@ -64,7 +67,7 @@
     <!-- end div#page -->
     <div id="footer">
       <p>Электронные сигареты в Молдове.</p>
-      <p><strong class="warning">ACHTUNG!</strong> Вам должно быть 18 лет или больше. Никто не утверждает, что 1) электронные сигареты помогут вам бросить курить 2) как и то, что они безопасны для здоровья.</p>
+      <p><strong class="warning">ACHTUNG!</strong> Вам должно быть 18 лет или больше.</p>
       <p id="legal">Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
     </div>
     <!-- end div#footer -->
