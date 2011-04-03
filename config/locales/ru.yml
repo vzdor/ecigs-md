@@ -30,6 +30,7 @@ ru:
   total: Всего
   delete: Удалить
   # products
+  please_select_quantity: Пожалуйста выберете количество
   similar_products: Схожие товары
   price: Цена
   available: Доступно

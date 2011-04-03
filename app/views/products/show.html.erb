@@ -63,7 +63,8 @@
           </tr>
         <% end %>
       </table>
-      <%= submit_tag t(:add_to_cart), :class => "button cart-add" %>
+      <div id="variations-quantity-notice" class="notice" style="display: none;"><%= t(:please_select_quantity) %>.</div>
+      <%= submit_tag t(:add_to_cart), :class => "button cart-add", :onclick => 'return verifyVariationsQuantity();' %>
     </div>
   <% end %>
 
