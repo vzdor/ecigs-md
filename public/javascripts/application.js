@@ -5,7 +5,7 @@ function verifyVariationsQuantity()
 {
     var inputs = $$("div.variations input[type=\"text\"]");
     for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].value > 1)
+        if (inputs[i].value > 0)
             return true
     }
     $("variations-quantity-notice").show(); // .highlight();
