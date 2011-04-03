@@ -7,20 +7,20 @@ class OrdersController < ApplicationController
 
   def new
     @order = @cart.clone
-    order_address = current_user.order_addresses.first
-    @order.order_address = order_address ? order_address.clone : OrderAddress.new
+    @order.order_address = current_user.address_for_order
   end
 
   def create
     @order = Order.new(params[:order])
     @order.attributes = @cart.for_cart # todo: looks stupid
     @order.user = current_user
-    @order.order_address.user = current_user
-    if @order.save
+    @order.order_address.user = current_user if @order.order_address # include_delivery => false
+    if params[:dont_submit].blank? && @order.save
       reset_cart
       flash[:notice] = t(:order_submitted)
       redirect_to @order
     else
+      @order.order_address ||= current_user.address_for_order
       render :action => "new"
     end
   end

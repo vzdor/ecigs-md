@@ -52,12 +52,14 @@ ru:
         phone_number: Телефон
         phone_number2: Дополнительный телефон
         notes: Примичание
+        include_delivery: Включить доставку
+
       user: # devise
         remember_me: Запомнить меня
         password: Пароль
         password_confirmation: Подтвердите пароль
-  submit: Заказать!
-  order_submitted: Заказ принят. Скоро мы с вами свяжемся. Спасибо.
+  submit: Разместить заказ
+  order_submitted: Заказ принят. Скоро мы с вами свяжемся. Спасибо
   order_num: "Заказ №%{num}"
   order_date: Дата
   status: Статус

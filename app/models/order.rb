@@ -9,6 +9,8 @@ class Order < ActiveRecord::Base
   has_one :order_address
   accepts_nested_attributes_for :order_address
 
+  # validates_presence_of :order_address, :if => :include_delivery?
+
   class Status
     PROCESSING = 0
     DELIVERY = 1
@@ -25,7 +27,7 @@ class Order < ActiveRecord::Base
 
   scope :recent, order('status, created_at desc')
 
-  attr_accessible :notes, :order_lines_attributes, :order_address_attributes
+  attr_accessible :notes, :order_lines_attributes, :order_address_attributes, :include_delivery
 
   def for_cart
     hash = {}
@@ -41,7 +43,7 @@ class Order < ActiveRecord::Base
   end
 
   def delivery_cost
-    self.class.delivery_cost
+    include_delivery? ? self.class.delivery_cost : 0.0
   end
 
   def total
@@ -49,7 +51,7 @@ class Order < ActiveRecord::Base
   end
 
   def total_with_delivery
-    total + delivery_cost
+    include_delivery? ? total + delivery_cost : total
   end
 
   # todo: update quantity if the same product

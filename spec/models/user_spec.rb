@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "address_for_order should make a new address" do
+    OrderAddress.should_receive(:new)
+    user = Factory(:user)
+    user.address_for_order
+  end
 end

@@ -35,4 +35,13 @@ describe OrdersController do
       response.should be_redirect
     end.should change(Order, :count).by(1)
   end
+
+  it "should not submit the order" do
+    order = Factory.build(:order)
+    session[:cart] = order.for_cart
+    proc do
+      post :create, :order => {:order_address_attributes => {:street => '123', :phone_number => '123'}, :notes => 'test'}, :dont_submit => "yes"
+      response.should be_success
+    end.should_not change(Order, :count)
+  end
 end

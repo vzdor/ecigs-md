@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
   def display_name
     email.split('@').first + '@..'
   end
+
+  def address_for_order
+    address = order_addresses.first
+    address ? address.clone : OrderAddress.new
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110320125232) do
+ActiveRecord::Schema.define(:version => 20110403120339) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(:version => 20110320125232) do
   end
 
   create_table "orders", :force => true do |t|
-    t.integer  "user_id",                                :null => false
+    t.integer  "user_id",                                         :null => false
     t.datetime "shipped_on"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",     :limit => 2, :default => 0
+    t.integer  "status",           :limit => 2, :default => 0
+    t.boolean  "include_delivery",              :default => true
   end
 
   create_table "products", :force => true do |t|

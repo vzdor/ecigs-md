@@ -7,7 +7,7 @@
   </ul>
   <%= render :partial => "order_lines" %>
 
-  <% if address = @order.order_address %>
+  <% if @order.include_delivery? && (address = @order.order_address) %>
     <div id="delivery-address">
       <h3><%= t(:delivery_address) %></h3>
       <%= h(address.street) %><br />
