@@ -24,4 +24,19 @@ describe Order do
       order.total_with_delivery.should == 0
     end
   end
+
+  it "should increment product quantity when shipped" do
+    order = Factory(:order)
+    order_line = order.order_lines.first
+    order.status = Order::Status::SHIPPED
+    proc { order.save! }.should change(order_line.product, :quantity).by(-order_line.quantity)
+  end
+
+  it "should rollback quantity when status changes from shipped" do
+    order = Factory(:order, :status => Order::Status::SHIPPED)
+    order_line = order.order_lines.first
+    order.status = Order::Status::CANCELLED
+    proc { order.save! }.should change(order_line.product, :quantity).by(order_line.quantity)
+
+  end
 end

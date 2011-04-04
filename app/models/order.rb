@@ -9,6 +9,8 @@ class Order < ActiveRecord::Base
   has_one :order_address
   accepts_nested_attributes_for :order_address
 
+  after_update :update_product_quantity
+
   # validates_presence_of :order_address, :if => :include_delivery?
 
   class Status
@@ -66,4 +68,17 @@ class Order < ActiveRecord::Base
       25.0
     end
   end
+
+  protected
+
+  def update_product_quantity
+    if status_changed?
+      if status == Status::SHIPPED
+        order_lines.each { |l| l.product.decrement!(:quantity, l.quantity) }
+      elsif status_was == Status::SHIPPED
+        order_lines.each { |l| l.product.increment!(:quantity, l.quantity) }
+      end
+    end
+  end
+
 end
