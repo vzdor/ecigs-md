@@ -530,7 +530,7 @@ p.out-of-stock {
 }
 
 /* cart/show */
-#cart-page table td {
+#cart-page td, #cart-page th {
   padding: 3px 3px 3px 3px;
 }
 
