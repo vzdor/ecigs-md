@@ -5,6 +5,7 @@ function verifyVariationsQuantity()
 {
     var inputs = $$("div.variations input[type=\"text\"]");
     for (var i = 0; i < inputs.length; i++) {
+        inputs[i].highlight();
         if (inputs[i].value > 0)
             return true
     }
