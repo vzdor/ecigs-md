@@ -1,4 +1,4 @@
-<h2><%= t(:sign_up) %></h2>
+<% title(t(:sign_up)) %>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= error_messages_for :user %>
