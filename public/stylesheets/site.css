@@ -524,9 +524,13 @@ p.out-of-stock {
   margin-top: 10px;
 }
 
-#product-page .description h3 {
+#product-page h3.slight-visiable {
   font-weight: normal;
   color: #646464;
+}
+
+#product-page .description ul, #product-page .description li {
+  list-style: disc inside;
 }
 
 /* cart/show */
