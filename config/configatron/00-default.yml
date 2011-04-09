@@ -1,0 +1,7 @@
+# smtp_settings:
+#   address: smtp.gmail.com
+#   port: 587
+#   user_name: username@gmail.com
+#   password: password
+#   authentication: plain
+#   enable_starttls_auto: true

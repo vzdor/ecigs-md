@@ -13,10 +13,15 @@ role :db,  "gw", :primary => true # This is where Rails migrations will run
 # if you're still using the script/reapear helper you will need
 # these http://github.com/rails/irs_process_scripts
 
+after 'deploy:symlink', 'deploy:symlink_config'
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{File.join(current_path, 'tmp', 'restart.txt')}"
+  end
+  task :symlink_config do
+    run "ln -nfs #{shared_path}/ecigs.yml #{release_path}/config/configatron"
   end
 end

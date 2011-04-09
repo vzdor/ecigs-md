@@ -19,6 +19,8 @@ gem "paperclip", "~> 2.3"
 
 gem 'RedCloth'
 
+gem 'configatron'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -36,6 +36,15 @@ describe OrdersController do
     end.should change(Order, :count).by(1)
   end
 
+  it "should send new order email" do
+    order = Factory.build(:order)
+    session[:cart] = order.for_cart
+    mailer = mock()
+    UserMailer.should_receive(:new_order_email).and_return(mailer)
+    mailer.should_receive(:deliver)
+    post :create, :order => {:order_address_attributes => {:street => '123', :phone_number => '123'}, :notes => 'test'}
+  end
+
   it "should not submit the order" do
     order = Factory.build(:order)
     session[:cart] = order.for_cart
