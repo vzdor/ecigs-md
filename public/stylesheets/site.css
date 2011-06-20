@@ -487,6 +487,11 @@ p.out-of-stock {
   color: red;
 }
 
+.price span {
+  color: #646464;
+  font-weight: normal;
+}
+
 /* products/new|edit */
 #product-form {
   padding-bottom: 10px;
@@ -504,10 +509,10 @@ p.out-of-stock {
   font-weight: bold;
 }
 
-#product-page .price span {
+/* #product-page .price span {
   color: #646464;
   font-weight: normal;
-}
+} */
 
 #product-page .variations th {
   font-weight: normal;

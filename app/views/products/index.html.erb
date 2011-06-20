@@ -13,6 +13,8 @@
       <h3><%= link_to h(product.title), product %></h3>
       <% unless product.in_stock? %>
         <p class="out-of-stock"><%= t(:out_of_stock) %>.</p>
+      <% else %>
+        <p class="price"><%= t(:price) %>: <%= product_price(product) %></p>
       <% end %>
       <%= textilize(product.short_summary) %> <%= link_to t(:more), product %>
       <div class="cut"></div>
