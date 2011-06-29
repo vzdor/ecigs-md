@@ -483,6 +483,10 @@ li#selected a {
   text-decoration: none;
 }
 
+#product-list p.price {
+  font-weight: bold;
+}
+
 p.out-of-stock {
   color: red;
 }
