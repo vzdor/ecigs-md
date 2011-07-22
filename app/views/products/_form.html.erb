@@ -19,6 +19,9 @@
   <%= label :product, :position %><br />
   <%= f.text_field :position, :size => 5 %>
 
+  <p><%= label :product, :is_discontinued %>
+    <%= f.check_box :is_discontinued %></p>
+
   <h3>Assets</h3>
   <ul class="asset-list">
     <%= f.fields_for :assets do |ff| %>

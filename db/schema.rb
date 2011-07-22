@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422175712) do
+ActiveRecord::Schema.define(:version => 20110722081534) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20110422175712) do
     t.integer  "product_id"
     t.text     "summary"
     t.integer  "position"
+    t.boolean  "is_discontinued",                                   :default => false
   end
 
   create_table "taggings", :force => true do |t|

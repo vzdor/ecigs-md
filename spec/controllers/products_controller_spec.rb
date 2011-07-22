@@ -57,6 +57,16 @@ describe ProductsController do
 
   it "should render index" do
     get :index
+
+    response.should be_success
+  end
+
+  it "should render discontinued" do
+    top = Product.top
+    discontinued = top.discontinued
+    Product.should_receive(:top).twice().and_return(top)
+    top.should_receive(:discontinued).and_return(discontinued)
+    get :index, :discontinued => :y
     response.should be_success
   end
 

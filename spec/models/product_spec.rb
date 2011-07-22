@@ -34,7 +34,11 @@ describe Product do
   end
 
   it "top scope should return products, not variations" do
-    Product.top.to_sql.should == 'SELECT `products`.* FROM `products` WHERE (product_id IS NULL) ORDER BY position desc, created_at asc'
+    Product.top.where_values_hash.should include(:product_id => nil, :is_discontinued => false)
+  end
+
+  it "top.discontinued show return only discontinued products" do
+    Product.top.discontinued.where_values_hash.should include(:is_discontinued => true)
   end
 
   it "has_variations?" do

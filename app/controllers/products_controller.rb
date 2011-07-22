@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 
   def index
     scope = Product.top
+    scope = scope.discontinued if params[:discontinued]
     if tag = params[:tag]
       scope = scope.tagged_with(tag)
     end
