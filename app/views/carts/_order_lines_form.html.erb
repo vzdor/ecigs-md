@@ -27,7 +27,7 @@
           <%= ff.text_field :quantity, :size => 4 %><br />
           <small>(<%= link_to t(:delete), delete_cart_path(:position => (position += 1)) %>)</small>
         </td>
-        <td><%= local_price(product.price) %></td>
+        <td><%= local_price(ol.product.price) %></td>
         <td><%= local_price(ol.price) %></td>
       </tr>
     <% end %>
