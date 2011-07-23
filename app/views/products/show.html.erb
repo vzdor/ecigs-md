@@ -49,7 +49,7 @@
           <th><%= t(:available) %></th>
           <th><%= t(:quantity) %></th>
         </tr>
-        <% @product.variations.each do |product| %>
+        <% @product.variations.sort_by(&:title).each do |product| %>
           <tr>
             <td><%= h(product.title) %></td>
             <% if product.in_stock? %>
