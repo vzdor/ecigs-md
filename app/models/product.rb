@@ -58,6 +58,14 @@ class Product < ActiveRecord::Base
     price.nil? && is_variation? ? product.price : price
   end
 
+  def is_variable_price?
+    @is_variable_price ||= (product_id || has_variations?) && variations.detect { |v| v.price != price }.present?
+  end
+
+  def lowest_variation_price
+    variations.minimum(:price)
+  end
+
   def short_summary
     summary.present? ? summary : description
   end

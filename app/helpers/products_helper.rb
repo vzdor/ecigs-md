@@ -6,7 +6,11 @@ module ProductsHelper
   end
 
   def product_price(product)
-    price = product.price
+    if product.is_variable_price?
+      price = product.lowest_variation_price
+    else
+      price = product.price
+    end
     local_price(price, true) +
       " <span>($#{price.to_usd.round(2)})</span>".html_safe
   end

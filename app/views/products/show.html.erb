@@ -9,7 +9,9 @@
       <li><%= link_to "Edit", edit_product_path(@product) %></li>
     <% end %>
     <li><%= t(:similar_products) %>: <%= tags_links(@product) %></li>
-    <li class="price"><%= t(:price) %>: <%= product_price(@product) %></li>
+    <% unless @product.is_variable_price? %>
+      <li class="price"><%= t(:price) %>: <%= product_price(@product) %></li>
+    <% end %>
     <% unless @product.has_variations? %>
       <% if @product.in_stock? %>
         <li><%= t(:available) %>: <%= @product.quantity %></li>
@@ -41,6 +43,9 @@
       <table width="100%">
         <tr>
           <th><%= t(:title) %></th>
+          <% if @product.is_variable_price? %>
+            <th><%= t(:price) %></th>
+          <% end %>
           <th><%= t(:available) %></th>
           <th><%= t(:quantity) %></th>
         </tr>
@@ -48,6 +53,9 @@
           <tr>
             <td><%= h(product.title) %></td>
             <% if product.in_stock? %>
+              <% if @product.is_variable_price? %>
+                <td><%= product_price(product) %></td>
+              <% end %>
               <td><%= product.quantity %></td>
               <td>
                 <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
@@ -56,7 +64,7 @@
                 <% end %>
               </td>
             <% else %>
-              <td colspan="2">
+              <td colspan="3">
                 <%= t(:out_of_stock) %>
               </td>
             <% end %>
