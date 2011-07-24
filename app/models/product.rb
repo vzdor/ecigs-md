@@ -69,5 +69,4 @@ class Product < ActiveRecord::Base
   def short_summary
     summary.present? ? summary : description
   end
-
 end

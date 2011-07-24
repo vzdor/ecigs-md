@@ -46,17 +46,21 @@
           <% if @product.is_variable_price? %>
             <th><%= t(:price) %></th>
           <% end %>
-          <th><%= t(:available) %></th>
+          <% unless @product.is_producible? %>
+            <th><%= t(:available) %></th>
+          <% end %>
           <th><%= t(:quantity) %></th>
         </tr>
         <% @product.variations.sort_by(&:title).each do |product| %>
           <tr>
             <td><%= h(product.title) %></td>
-            <% if product.in_stock? %>
+            <% if product.in_stock? || @product.is_producible? %>
               <% if @product.is_variable_price? %>
                 <td><%= product_price(product) %></td>
               <% end %>
-              <td><%= product.quantity %></td>
+              <% unless @product.is_producible? %>
+                <td><%= product.quantity %></td>
+              <% end %>
               <td>
                 <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
                   <%= ff.hidden_field :product_id, :value => product.id %>
