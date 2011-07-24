@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
 
   # you should not delete any of the variations, or you get orders or cart messed up. Instead, just set quantity to 0
   has_many :variations, :class_name => 'Product', :order => 'title'
-  accepts_nested_attributes_for :variations, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }
+  accepts_nested_attributes_for :variations, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }, :allow_destroy => true
 
   validates_presence_of :title
 
