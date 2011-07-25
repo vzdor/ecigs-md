@@ -10,16 +10,34 @@
     </tr>
     <% position = -1 %>
     <%= f.fields_for :order_lines do |ff| %>
-      <%= ff.hidden_field :product_id %>
-      <% ol = ff.object %>
       <tr>
+        <% ol = ff.object %>
+
         <% product = ol.product %>
         <% if ol.product.is_variation? %>
           <% product = product.product %>
         <% end %>
-        <td><%= ol.product.id %></td>
-        <td><%= link_to h(product.title), product %>
-          <% if ol.product.is_variation? %>
+        <td>
+          <% if ol.product.kind_of?(Mixture) && ol.product.new_record? %>
+            <% ol.product_ids.each do |id| %>
+              <%= ff.hidden_field :product_ids, :name => "order[order_lines_attributes][0][product_ids][]", :value => id, :id => nil %>
+            <% end %>
+          <% else %>
+            <%= ff.hidden_field :product_id %>
+          <% end %>
+
+          <%= ol.product.id %>
+        </td>
+        <td><%= link_to h(product.title), product_path(product) %>
+          <% if (mixture = ol.product).kind_of?(Mixture) %>
+            <% mixture.mixture_products.each do |p| %>
+              <% p = p.product %>
+              <br /><%= h(p.variation_crumb) %>
+            <% end %>
+            <% unless mixture.new_record? %>
+              <br /><%= link_to 'Someone already bought that mix. See if he left any feedback...', mixture %>
+            <% end %>
+          <% elsif ol.product.is_variation? %>
             <br /><%= h(ol.product.title) %>
           <% end %>
         </td>

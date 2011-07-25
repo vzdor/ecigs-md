@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110724140926) do
+ActiveRecord::Schema.define(:version => 20110725191622) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(:version => 20110724140926) do
   end
 
   add_index "assets", ["attachable_id", "attachable_type"], :name => "index_assets_on_attachable_id_and_attachable_type"
+
+  create_table "mixture_products", :force => true do |t|
+    t.integer "mixture_id"
+    t.integer "product_id"
+  end
 
   create_table "order_addresses", :force => true do |t|
     t.integer  "order_id",      :null => false
@@ -69,7 +74,13 @@ ActiveRecord::Schema.define(:version => 20110724140926) do
     t.integer  "position"
     t.boolean  "is_discontinued",                                   :default => false
     t.boolean  "is_producible",                                     :default => false
+    t.boolean  "is_mixture",                                        :default => false
+    t.string   "type",                                              :default => "Product"
+    t.string   "mixture_hash"
+    t.boolean  "is_primary",                                        :default => false
   end
+
+  add_index "products", ["mixture_hash"], :name => "index_products_on_mixture_hash", :unique => true
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

@@ -19,11 +19,14 @@
   <%= label :product, :position %><br />
   <%= f.text_field :position, :size => 5 %>
 
-  <p><%= label :product, :is_discontinued %>
+  <p><%= label :product, :is_discontinued %>?
     <%= f.check_box :is_discontinued %></p>
 
-  <p><%= label :product, :is_producible %>
-    <%= f.check_box :is_producible %></p>
+  <p><%= label :product, :is_producible %>?
+    <%= f.check_box :is_producible %> <small>(Hide quantity)</small></p>
+
+  <p><%= label :product, :is_mixture %>?
+    <%= f.check_box :is_mixture %> <small>(Show Mixture Constructor view)</small></p>
 
   <h3>Assets</h3>
   <ul class="asset-list">
@@ -47,7 +50,14 @@
     <%= f.fields_for :variations do |ff| %>
       <% product = ff.object %>
       <li>
-        Title: <%= ff.text_field :title %> Price: <%= ff.text_field :price, :size => 4 %> Quantity: <%= ff.text_field :quantity, :size => 4 %> Delete? <%= ff.check_box :_destroy %>
+        Title: <%= ff.text_field :title %> Price: <%= ff.text_field :price, :size => 4 %> Quantity: <%= ff.text_field :quantity, :size => 4 %>
+        <p><small>
+            <%= label :product, :is_primary %>? <%= ff.check_box :is_primary %>
+            <% unless product.new_record? %>
+              Delete? <%= ff.check_box :_destroy %>
+              <%= link_to "Edit", edit_product_path(product) %>
+            <% end %>
+          </small></p>
         <% if product.new_record? %>
           <%= ff.hidden_field :product_id, :value => 0 %>
         <% end %>

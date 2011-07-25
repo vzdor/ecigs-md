@@ -2,3 +2,4 @@
 tmp/*
 log/*
 public/system
+config/configatron/development.yml

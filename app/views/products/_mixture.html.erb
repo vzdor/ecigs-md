@@ -1,0 +1,22 @@
+<div class="mixture-options">
+  <!-- <%= f.fields_for :mixture, Order.new do |ff| %> -->
+  <!--   <% @product.variations.each do |product| %> -->
+  <!--     <p><%= h(product.title) %> -->
+  <!--       <%= ff.fields_for :order_lines, OrderLine.new do |fff| %> -->
+  <!--         <%= fff.select(:product_id, product.variations.map { |p| [p.title, p.id] }) %> -->
+  <!--     <% end %></p> -->
+  <!--   <% end %> -->
+  <!-- <% end %> -->
+
+  <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
+    <% @product.variations.each do |product| %>
+      <p><%= h(product.title) %>
+        <%= ff.select(:product_ids, product.variations.map { |p| [p.title, p.id] }, {}, :name => "order[order_lines_attributes][0][product_ids][]") %>
+      </p>
+    <% end %>
+    <br />
+    <%= ff.text_field :quantity, :size => 4, :value => 1 %>
+  <% end %>
+
+  <%= submit_tag t(:add_to_cart), :class => "button cart-add" %>
+</div>

@@ -14,12 +14,17 @@
       <% end %>
       <td><%= ol.product.id %></td>
       <td><%= link_to h(product.title), product %>
-        <% if ol.product.is_variation? %>
+        <% if ol.product.kind_of?(Mixture) %>
+          <% ol.product.mixture_products.each do |p| %>
+            <% p = p.product %>
+            <br /><%= h(p.variation_crumb) %>
+          <% end %>
+        <% elsif ol.product.is_variation? %>
           <br /><%= h(ol.product.title) %>
         <% end %>
       </td>
       <td><%= ol.quantity %></td>
-      <td><%= ol.unit_price %></td>
+      <td><%= ol.product.price %></td>
       <td><%= ol.price %></td>
     </tr>
   <% end %>

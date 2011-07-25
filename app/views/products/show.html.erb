@@ -8,7 +8,9 @@
     <% if is_admin? %>
       <li><%= link_to "Edit", edit_product_path(@product) %></li>
     <% end %>
-    <li><%= t(:similar_products) %>: <%= tags_links(@product) %></li>
+    <% if @product.tags.present? %>
+      <li><%= t(:similar_products) %>: <%= tags_links(@product) %></li>
+    <% end %>
     <% unless @product.is_variable_price? %>
       <li class="price"><%= t(:price) %>: <%= product_price(@product) %></li>
     <% end %>
@@ -39,49 +41,21 @@
   <div class="cut"></div>
 
   <% if @product.has_variations? %>
-    <div class="variations">
-      <table width="100%">
-        <tr>
-          <th><%= t(:title) %></th>
-          <% if @product.is_variable_price? %>
-            <th><%= t(:price) %></th>
-          <% end %>
-          <% unless @product.is_producible? %>
-            <th><%= t(:available) %></th>
-          <% end %>
-          <th><%= t(:quantity) %></th>
-        </tr>
-        <% @product.variations.sort_by(&:title).each do |product| %>
-          <tr>
-            <td><%= h(product.title) %></td>
-            <% if product.in_stock? || @product.is_producible? %>
-              <% if @product.is_variable_price? %>
-                <td><%= product_price(product) %></td>
-              <% end %>
-              <% unless @product.is_producible? %>
-                <td><%= product.quantity %></td>
-              <% end %>
-              <td>
-                <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
-                  <%= ff.hidden_field :product_id, :value => product.id %>
-                  <%= ff.text_field :quantity, :size => 4, :value => 0 %>
-                <% end %>
-              </td>
-            <% else %>
-              <td colspan="3">
-                <%= t(:out_of_stock) %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </table>
-      <div id="variations-quantity-notice" class="notice" style="display: none;"><%= t(:please_select_quantity) %>.</div>
-      <%= submit_tag t(:add_to_cart), :class => "button cart-add", :onclick => 'return verifyVariationsQuantity();' %>
-    </div>
+    <% if @product.is_mixture? %>
+      <%= render :partial => "mixture", :locals => {:f => f} %>
+    <% else %>
+      <%= render :partial => "variations", :locals => {:f => f} %>
+    <% end %>
   <% end %>
 
   <div class="description">
     <h3 class="slight-visiable"><%= t(:product_description) %></h3>
+    <% if @product.kind_of?(Mixture) %>
+      <% @product.primary_set.each do |p| %>
+        <br /><%= h(p.variation_crumb) %>
+      <% end %>
+    <% end %>
+
     <%= textilize(@product.description) %>
   </div>
   <% end # /form %>

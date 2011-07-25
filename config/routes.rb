@@ -64,6 +64,8 @@ Ecigs::Application.routes.draw do
     end
   end
 
+  resources :mixtures, :to => "products"
+
   resource :cart do
     collection do
       get :delete
