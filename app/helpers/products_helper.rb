@@ -11,6 +11,10 @@ module ProductsHelper
     else
       price = product.price
     end
+    show_price(price)
+  end
+
+  def show_price(price)
     local_price(price, true) +
       " <span>($#{price.to_usd.round(2)})</span>".html_safe
   end

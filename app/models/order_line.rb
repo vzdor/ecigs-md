@@ -42,7 +42,7 @@ class OrderLine < ActiveRecord::Base
         product.save!
       rescue ActiveRecord::RecordNotUnique
         self.product = Mixture.find_by_mixture_hash(product.mixture_hash)
-      end
+     end
       self.product_id = product.id
     end
   end

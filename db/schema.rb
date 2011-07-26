@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725191622) do
+ActiveRecord::Schema.define(:version => 20110725171706) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20110725191622) do
     t.boolean  "is_mixture",                                        :default => false
     t.string   "type",                                              :default => "Product"
     t.string   "mixture_hash"
-    t.boolean  "is_primary",                                        :default => false
   end
 
   add_index "products", ["mixture_hash"], :name => "index_products_on_mixture_hash", :unique => true

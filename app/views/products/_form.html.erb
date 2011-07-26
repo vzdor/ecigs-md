@@ -52,7 +52,6 @@
       <li>
         Title: <%= ff.text_field :title %> Price: <%= ff.text_field :price, :size => 4 %> Quantity: <%= ff.text_field :quantity, :size => 4 %>
         <p><small>
-            <%= label :product, :is_primary %>? <%= ff.check_box :is_primary %>
             <% unless product.new_record? %>
               Delete? <%= ff.check_box :_destroy %>
               <%= link_to "Edit", edit_product_path(product) %>

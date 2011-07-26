@@ -14,21 +14,9 @@ class Mixture < Product
     product.title
   end
 
-  def primary_set
-    Mixture.primary_set(products)
-  end
-
   class << self
-    def primary_set(products)
-      products.reject do |p|
-        p = p.product while p && !p.is_primary?
-        p.nil?
-      end
-    end
-
     def mixture_hash(products)
-      primary = primary_set(products)
-      primary.map(&:id).join('-')
+      products.map(&:id).join('-')
     end
 
     def build_new(products)
