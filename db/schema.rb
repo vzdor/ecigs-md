@@ -10,7 +10,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726163310) do
+ActiveRecord::Schema.define(:version => 20110726173312) do
+
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
     t.string   "blob_content_type"
@@ -70,12 +71,8 @@ ActiveRecord::Schema.define(:version => 20110726163310) do
     t.boolean  "is_discontinued",                                   :default => false
     t.boolean  "is_producible",                                     :default => false
     t.boolean  "is_mixture",                                        :default => false
-<<<<<<< HEAD
-    t.string   "type",                                              :default => "Product"
-    t.string   "mixture_hash"
-=======
     t.boolean  "is_primary",                                        :default => false
->>>>>>> remove mixture class - too complicated; later I add Mixture object which will be saved only with primary set
+    t.boolean  "is_default",                                        :default => false
   end
 
   create_table "taggings", :force => true do |t|

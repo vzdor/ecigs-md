@@ -1,8 +1,9 @@
 <div class="mixture-options">
   <%= f.fields_for :order_lines, OrderLine.new do |ff| %>
     <% @product.variations.each do |product| %>
+      <% default = product.variations.detect { |v| v.is_default? } %>
       <p><%= h(product.title) %>
-        <%= ff.select(:product_ids, product.variations.map { |p| [p.title + (p.price.present? && p.price > 0 ? " + #{local_price(p.price, true)}" : ""), p.id] }, {}, :name => "order[order_lines_attributes][0][product_ids][]") %>
+        <%= ff.select(:product_ids, product.variations.map { |p| [p.title + (p.price.present? && p.price > 0 ? " + #{local_price(p.price, true)}" : ""), p.id] }, {:selected => default ? default.id : nil}, :name => "order[order_lines_attributes][0][product_ids][]") %>
       </p>
     <% end %>
     <br />
