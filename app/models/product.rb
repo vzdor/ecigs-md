@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :assets, :allow_destroy => true
 
   # you should not delete any of the variations, or you get orders or cart messed up. Instead, just set quantity to 0
-  has_many :variations, :class_name => 'Product', :order => 'title', :conditions => {:type => Product}
+  has_many :variations, :class_name => 'Product', :order => 'title'
   accepts_nested_attributes_for :variations, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }, :allow_destroy => true
 
   validates_presence_of :title
@@ -27,7 +27,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :price, :unless => :is_variation?
 
   validates_numericality_of :price, :greater_than => 0, :unless => :is_variation?
-  scope :top, where(:product_id => nil, :is_discontinued => false, :type => :product).order("position desc, created_at asc") do
+  scope :top, where(:product_id => nil, :is_discontinued => false).order("position desc, created_at asc") do
     def discontinued
       where(:is_discontinued => true)
     end
