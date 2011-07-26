@@ -8,7 +8,9 @@
     <% if is_admin? || @product.product %>
       <li>
         <%= link_to_if is_admin?, "Edit", edit_product_path(@product) %>
-        <%= link_to_if @product.product, 'Root', @product.root %>
+        <% if @product.product %>
+          <%= link_to h(@product.root.title), @product.root %>
+        <% end %>
       </li>
     <% end %>
     <% if @product.tags.present? %>
@@ -53,12 +55,6 @@
 
   <div class="description">
     <h3 class="slight-visiable"><%= t(:product_description) %></h3>
-    <% if @product.kind_of?(Mixture) %>
-      <% @product.products.each do |p| %>
-        <br /><%= h(p.variation_crumb) %>
-      <% end %>
-    <% end %>
-
     <%= textilize(@product.description) %>
   </div>
   <% end # /form %>

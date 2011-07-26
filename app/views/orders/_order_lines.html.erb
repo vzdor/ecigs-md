@@ -9,14 +9,13 @@
   <% @order.order_lines.each do |ol| %>
     <tr>
       <% product = ol.product %>
-      <% if ol.product.is_variation? %>
+      <% if !product.is_mixture? && ol.product.is_variation? %>
         <% product = product.product %>
       <% end %>
       <td><%= ol.product.id %></td>
       <td><%= link_to h(product.title), product %>
-        <% if ol.product.kind_of?(Mixture) %>
-          <% ol.product.mixture_products.each do |p| %>
-            <% p = p.product %>
+        <% if ol.product.is_mixture? %>
+          <% ol.products.each do |p| %>
             <br /><%= h(p.variation_crumb) %>
           <% end %>
         <% elsif ol.product.is_variation? %>
@@ -24,7 +23,7 @@
         <% end %>
       </td>
       <td><%= ol.quantity %></td>
-      <td><%= ol.product.price %></td>
+      <td><%= ol.unit_price %></td>
       <td><%= ol.price %></td>
     </tr>
   <% end %>

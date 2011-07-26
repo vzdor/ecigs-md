@@ -18,7 +18,7 @@
           <% product = product.product %>
         <% end %>
         <td>
-          <% if ol.product.kind_of?(Mixture) && ol.product.new_record? %>
+          <% if product.is_mixture? %>
             <% ol.product_ids.each do |id| %>
               <%= ff.hidden_field :product_ids, :name => "order[order_lines_attributes][0][product_ids][]", :value => id, :id => nil %>
             <% end %>
@@ -29,13 +29,9 @@
           <%= ol.product.id %>
         </td>
         <td><%= link_to h(product.title), product_path(product) %>
-          <% if (mixture = ol.product).kind_of?(Mixture) %>
-            <% mixture.mixture_products.each do |p| %>
-              <% p = p.product %>
+          <% if product.is_mixture? %>
+            <% ol.products.each do |p| %>
               <br /><%= h(p.variation_crumb) %>
-            <% end %>
-            <% unless mixture.new_record? %>
-              <br /><%= link_to 'Someone already bought that mix. See if he left any feedback...', mixture %>
             <% end %>
           <% elsif ol.product.is_variation? %>
             <br /><%= h(ol.product.title) %>
@@ -45,7 +41,7 @@
           <%= ff.text_field :quantity, :size => 4 %><br />
           <small>(<%= link_to t(:delete), delete_cart_path(:position => (position += 1)) %>)</small>
         </td>
-        <td><%= local_price(ol.product.price) %></td>
+        <td><%= local_price(ol.unit_price) %></td>
         <td><%= local_price(ol.price) %></td>
       </tr>
     <% end %>

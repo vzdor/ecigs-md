@@ -7,10 +7,9 @@ class OrderLine < ActiveRecord::Base
 
   validates_presence_of :product
 
-  attr_accessor :product_ids
   attr_accessible :quantity, :product_id, :product_ids
 
-  before_save :set_unit_price, :save_mixture
+  before_save :set_unit_price, :set_optional
 
   def for_cart
     if product_ids.present?
@@ -23,32 +22,39 @@ class OrderLine < ActiveRecord::Base
   end
 
   def price
-    quantity * (unit_price || product.price)
+    quantity * unit_price
+  end
+
+  def unit_price
+    super || (product.is_mixture? ? products.sum(&:price) : product.price)
   end
 
   def product_ids=(ids)
     @product_ids = ids
-    products = Product.find(ids)
     roots = products.collect(&:root)
     raise "No way, bro." unless roots.uniq.size == 1
-    self.product = Mixture.from_order_products(products)
+    self.product = roots.first
   end
+
+  def product_ids
+    @product_ids ||= optional ? optional[:product_ids] : []
+  end
+
+  def products
+    @products ||= Product.find(product_ids)
+  end
+
+  serialize :optional
 
   private
 
-  def save_mixture
-    if product.new_record?
-      begin
-        product.save!
-      rescue ActiveRecord::RecordNotUnique
-        self.product = Mixture.find_by_mixture_hash(product.mixture_hash)
-     end
-      self.product_id = product.id
-    end
+  def set_optional
+    self.optional ||= {}
+    optional[:product_ids] = product_ids
   end
 
   def set_unit_price
-    self.unit_price = product.price
+    self.unit_price = unit_price
   end
 
 end

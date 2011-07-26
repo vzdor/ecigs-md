@@ -17,17 +17,24 @@
           <td><%= order_status(order) %></td>
           <td>
             <ul>
-              <% order.products.each do |p| %>
-                <% product = p %>
-                <% if product.is_variation? %>
-                  <% product = product.product %>
-                <% end %>
-                <li>
+              <% order.order_lines.each do |ol| %>
+                <% product = ol.product %>
+                <% if product.is_mixture? %>
                   <%= link_to h(product.title), order %>
-                  <% if p.is_variation? %>
-                    (<%= h(p.title) %>)
+                  <% ol.products.each do |p| %>
+                    <li><%= h(p.variation_crumb) %></li>
                   <% end %>
-                </li>
+                 <% else %>
+                   <% if product.is_variation? %>
+                     <% product = product.product %>
+                   <% end %>
+                  <li>
+                    <%= link_to h(product.title), order %>
+                    <% if p.is_variation? %>
+                      (<%= h(p.title) %>)
+                    <% end %>
+                  </li>
+                <% end %>
               <% end %>
             </ul>
             <%= link_to t(:more) + '...', order %>
