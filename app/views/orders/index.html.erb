@@ -27,7 +27,9 @@
                   <% end %>
                  <% elsif product.is_variation? %>
                    <%= link_to h(product.product.title), order %>
-                  <li>(<%= h(product.title) %>)</li>
+                  <li><%= h(product.title) %></li>
+                <% else %>
+                  <%= link_to h(product.title), order %>
                 <% end %>
               <% end %>
             </ul>
