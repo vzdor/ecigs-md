@@ -24,11 +24,11 @@
                   <% if product.is_mixture? %>
                     <%= link_to h(product.title), order %>
                     <% ol.products.each do |p| %>
-                      <%= h(p.variation_crumb) %>
+                      <br /><%= h(p.variation_crumb) %>
                     <% end %>
                   <% elsif product.is_variation? %>
                     <%= link_to h(product.product.title), order %>
-                    <%= h(product.title) %>
+                    <br /><%= h(product.title) %>
                   <% else %>
                     <%= link_to h(product.title), order %>
                   <% end %>
