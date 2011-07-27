@@ -32,6 +32,22 @@ describe Order do
     proc { order.save! }.should change(order_line.product, :quantity).by(-order_line.quantity)
   end
 
+  it "should not increment product quantity if is_producible?" do
+    order = Factory(:order)
+    order_line = order.order_lines.first
+    order_line.product.is_producible = true
+    order.status = Order::Status::SHIPPED
+    proc { order.save! }.should_not change(order_line.product, :quantity)
+  end
+
+  it "should not increment product quantity if is_mixture?" do
+    order = Factory(:order)
+    order_line = order.order_lines.first
+    order_line.product.is_mixture = true
+    order.status = Order::Status::SHIPPED
+    proc { order.save! }.should_not change(order_line.product, :quantity)
+  end
+
   it "should rollback quantity when status changes from shipped" do
     order = Factory(:order, :status => Order::Status::SHIPPED)
     order_line = order.order_lines.first

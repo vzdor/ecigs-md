@@ -55,19 +55,19 @@ describe Product do
     product.is_variation?.should == true
   end
 
-  it "is_variable_price?" do
+  it "price_varies?" do
     product = Factory(:product)
     product.variations.build
-    product.is_variable_price?.should == false
+    product.price_varies?.should == false
     product.variations.build(:price => product.price + 1)
-    product.is_variable_price?.should == true
+    product.price_varies?.should == true
   end
 
-  it "lowest_variation_price" do
+  it "lowest_price" do
     product = Factory(:product)
     v = product.variations.create!(:title => "test 1", :quantity => 2, :price => 1)
     product.variations.create!(:title => "test 2", :quantity => 2, :price => 2)
-    product.lowest_variation_price.should == v.price
+    product.lowest_price.should == v.price
   end
 
   it "short_summary" do

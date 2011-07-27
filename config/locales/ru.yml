@@ -63,7 +63,7 @@ ru:
       next: Далее
       previous: Назад
   submit: Разместить заказ
-  order_submitted: Заказ принят. Скоро мы с вами свяжемся. Спасибо
+  order_submitted: Заказ принят. Спасибо
   order_num: "Заказ №%{num}"
   order_date: Дата
   status: Статус

@@ -73,11 +73,11 @@ class Order < ActiveRecord::Base
 
   def set_product_quantity
     if status_changed?
-      lines = order_lines.reject { |l| l.product.is_producible? || l.product.is_mixture? }
+      lines = order_lines.reject { |l| l.product.root.is_producible? || l.product.root.is_mixture? }
       if status == Status::SHIPPED
-        order_lines.each { |l| l.product.decrement!(:quantity, l.quantity) }
+        lines.each { |l| l.product.decrement!(:quantity, l.quantity) }
       elsif status_was == Status::SHIPPED
-        order_lines.each { |l| l.product.increment!(:quantity, l.quantity) }
+        lines.each { |l| l.product.increment!(:quantity, l.quantity) }
       end
     end
   end

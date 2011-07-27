@@ -16,7 +16,7 @@
     <% if @product.tags.present? %>
       <li><%= t(:similar_products) %>: <%= tags_links(@product) %></li>
     <% end %>
-    <% unless @product.is_variable_price? %>
+    <% unless @product.price_varies? %>
       <li class="price"><%= t(:price) %>: <%= product_price(@product) %></li>
     <% end %>
     <% unless @product.has_variations? %>

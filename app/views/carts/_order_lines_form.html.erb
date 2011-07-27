@@ -8,7 +8,7 @@
       <th width="15%"><%= t(:unit_price) %></th>
       <th><%= t(:price) %></th>
     </tr>
-    <% position = -1 %>
+    <% position = 0 %>
     <%= f.fields_for :order_lines do |ff| %>
       <tr>
         <% ol = ff.object %>
@@ -20,7 +20,7 @@
         <td>
           <% if product.is_mixture? %>
             <% ol.product_ids.each do |id| %>
-              <%= ff.hidden_field :product_ids, :name => "order[order_lines_attributes][0][product_ids][]", :value => id, :id => nil %>
+              <%= ff.hidden_field :product_ids, :name => "order[order_lines_attributes][#{position}][product_ids][]", :value => id, :id => nil %>
             <% end %>
           <% else %>
             <%= ff.hidden_field :product_id %>
@@ -39,11 +39,12 @@
         </td>
         <td>
           <%= ff.text_field :quantity, :size => 4 %><br />
-          <small>(<%= link_to t(:delete), delete_cart_path(:position => (position += 1)) %>)</small>
+          <small>(<%= link_to t(:delete), delete_cart_path(:position => position) %>)</small>
         </td>
         <td><%= local_price(ol.unit_price) %></td>
         <td><%= local_price(ol.price) %></td>
       </tr>
+      <% position += 1 %>
     <% end %>
     <tr>
       <td colspan="3"></td>

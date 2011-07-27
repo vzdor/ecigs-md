@@ -2,7 +2,7 @@
       <table width="100%">
         <tr>
           <th><%= t(:title) %></th>
-          <% if @product.is_variable_price? %>
+          <% if @product.price_varies? %>
             <th><%= t(:price) %></th>
           <% end %>
           <% unless @product.is_producible? %>
@@ -14,7 +14,7 @@
           <tr>
             <td><%= h(product.title) %></td>
             <% if product.in_stock? || @product.is_producible? %>
-              <% if @product.is_variable_price? %>
+              <% if @product.price_varies? %>
                 <td><%= product_price(product) %></td>
               <% end %>
               <% unless @product.is_producible? %>

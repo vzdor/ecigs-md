@@ -58,12 +58,20 @@ class Product < ActiveRecord::Base
     price.nil? && is_variation? ? product.price : price
   end
 
-  def is_variable_price?
-    @is_variable_price ||= (product_id || has_variations?) && variations.detect { |v| v.price != price }.present?
+  def price_varies?
+    @price_varies ||= !is_mixture? && (product_id || has_variations?) && variations.detect { |v| v.price != price }.present?
   end
 
-  def lowest_variation_price
-    variations.minimum(:price)
+  def lowest_price
+    @lowest_price ||= variations.minimum(:price)
+  end
+
+  def mixture_prices
+    if has_variations?
+      variations.map(&:mixture_prices).flatten.uniq.reject { |p| p == 0 }
+    else
+      [price]
+    end
   end
 
   def short_summary

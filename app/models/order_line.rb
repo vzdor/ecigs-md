@@ -26,7 +26,7 @@ class OrderLine < ActiveRecord::Base
   end
 
   def unit_price
-    super || (product.is_mixture? ? products.sum(&:price) : product.price)
+    super || (product.is_mixture? ? product.price + products.sum(&:price) : product.price)
   end
 
   def product_ids=(ids)
@@ -34,6 +34,7 @@ class OrderLine < ActiveRecord::Base
     roots = products.collect(&:root)
     raise "No way, bro." unless roots.uniq.size == 1
     self.product = roots.first
+    raise "Uh no" unless product.is_mixture?
   end
 
   def product_ids

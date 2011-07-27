@@ -6,8 +6,8 @@ module ProductsHelper
   end
 
   def product_price(product)
-    if product.is_variable_price?
-      price = product.lowest_variation_price
+    if product.price_varies?
+      price = product.lowest_price
     else
       price = product.price
     end

@@ -19,7 +19,7 @@
             <br /><%= h(p.variation_crumb) %>
           <% end %>
         <% elsif ol.product.is_variation? %>
-          <br /><%= h(ol.product.title) %>
+          <br />(<%= h(ol.product.title) %>)
         <% end %>
       </td>
       <td><%= ol.quantity %></td>

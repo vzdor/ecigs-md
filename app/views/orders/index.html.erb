@@ -19,21 +19,15 @@
             <ul>
               <% order.order_lines.each do |ol| %>
                 <% product = ol.product %>
+
                 <% if product.is_mixture? %>
                   <%= link_to h(product.title), order %>
                   <% ol.products.each do |p| %>
                     <li><%= h(p.variation_crumb) %></li>
                   <% end %>
-                 <% else %>
-                   <% if product.is_variation? %>
-                     <% product = product.product %>
-                   <% end %>
-                  <li>
-                    <%= link_to h(product.title), order %>
-                    <% if p.is_variation? %>
-                      (<%= h(p.title) %>)
-                    <% end %>
-                  </li>
+                 <% elsif product.is_variation? %>
+                   <%= link_to h(product.product.title), order %>
+                  <li>(<%= h(product.title) %>)</li>
                 <% end %>
               <% end %>
             </ul>

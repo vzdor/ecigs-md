@@ -55,6 +55,11 @@ describe ProductsController do
     response.should be_success
   end
 
+  it "should render show with mixture" do
+    get :show, :id => Factory(:mixture).id
+    response.should be_success
+  end
+
   it "should render index" do
     get :index
 
