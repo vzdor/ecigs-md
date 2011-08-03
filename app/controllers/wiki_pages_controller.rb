@@ -1,4 +1,7 @@
 class WikiPagesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
+
+  before_filter :is_admin_filter, :except => [:show]
 
   before_filter :get_wiki_page, :only => [:show, :edit, :update]
 
@@ -33,7 +36,9 @@ class WikiPagesController < ApplicationController
   protected
 
   def get_wiki_page
-    @wiki_page = WikiPage.visible.find_by_slug!(params[:id])
+    scope = WikiPage.visible
+    scope = WikiPage if is_admin?
+    @wiki_page = scope.find_by_slug!(params[:id])
   rescue ActiveRecord::RecordNotFound
     is_admin? ? redirect_to(new_wiki_page_path) : raise
   end

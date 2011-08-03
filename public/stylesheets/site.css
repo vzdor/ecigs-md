@@ -584,3 +584,17 @@ p.out-of-stock {
 #admin-orders tr.status0 {
   background-color: #ccf8bd;
 }
+
+/* wiki */
+
+.edit-add-links {
+  padding-bottom: 10px;
+}
+
+.edit-add-links a {
+  margin-right: 15px;
+}
+
+#wiki-pages .wiki-list {
+  width: 100%;
+}

@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def textilize(text)
-    RedCloth.new(auto_link(text)).to_html(:textile, :product_refs, :wiki).html_safe unless text.blank?
+    RedCloth.new(text).to_html(:textile, :product_refs, :wiki).html_safe unless text.blank?
   end
 
   def wikify(text)

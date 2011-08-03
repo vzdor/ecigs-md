@@ -39,6 +39,13 @@ describe ProductsController do
     end
   end
 
+  it "should find wiki_page if no tag" do
+    vis = mock()
+    WikiPage.should_receive(:visible).and_return(vis)
+    vis.should_receive(:find_by_slug).with("products-index")
+    get :index
+  end
+
   it "should not be allowed to add a new product" do
     proc {
       post :create, :product => {:title => "test", :description => "test", :price => 12, :quantity => 10}

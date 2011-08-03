@@ -1,13 +1,22 @@
-<h2>Wiki Pages</h2>
+<% title("Wiki pages") %>
 
 <div id="wiki-pages">
   <div class="edit-add-links">
     <%= link_to "Add a wiki page", new_wiki_page_path %>
   </div>
 
-  <% @wiki_pages.each do |wiki| %>
-    <div class="wiki">
-      <p><%= link_to wiki.title, wiki %> <%= link_to "Edit", edit_wiki_page_path(wiki) %></p>
-    </div>
-  <% end %>
+  <table class="wiki-list">
+    <tr>
+      <td></td>
+      <td>Is visible?</td>
+      <td></td>
+    </tr>
+    <% @wiki_pages.each do |wiki| %>
+      <tr>
+        <td><%= link_to wiki.title, wiki %></td>
+        <td><%= wiki.is_visible? ? "yes" : "no" %></td>
+        <td><%= link_to "Edit", edit_wiki_page_path(wiki) %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
