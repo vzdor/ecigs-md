@@ -1,0 +1,13 @@
+<% title(h(@wiki_page.title), false) %>
+
+<div id="wiki">
+  <h2><%= h(@wiki_page.title) %></h2>
+
+  <% if is_admin? %>
+    <%= link_to "Back to wiki_pages#index", wiki_pages_path %> <%= link_to "Edit", edit_wiki_page_path(@wiki_page) %>
+  <% end %>
+
+  <div class="markup">
+    <%= wikify(@wiki_page.content) %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<h2>New wiki page</h2>
+
+<% form_for @wiki_page do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= submit_tag "Add" %>
+<% end %>

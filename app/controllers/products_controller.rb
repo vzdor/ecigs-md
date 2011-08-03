@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
     scope = scope.discontinued if params[:discontinued]
     if tag = params[:tag]
       scope = scope.tagged_with(tag)
+    else
+      @wiki_page = WikiPage.visible.find_by_slug("products-index")
     end
     @products = scope.page(params[:page]).per(15)
   end

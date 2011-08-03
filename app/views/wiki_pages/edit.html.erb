@@ -1,0 +1,6 @@
+<h2>Edit: <%= h(@wiki_page.title) %></h2>
+
+<% form_for @wiki_page do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= submit_tag "Save" %> <%= link_to "Cancel", wiki_pages_path %>
+<% end %>

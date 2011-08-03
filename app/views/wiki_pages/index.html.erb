@@ -1,0 +1,13 @@
+<h2>Wiki Pages</h2>
+
+<div id="wiki-pages">
+  <div class="edit-add-links">
+    <%= link_to "Add a wiki page", new_wiki_page_path %>
+  </div>
+
+  <% @wiki_pages.each do |wiki| %>
+    <div class="wiki">
+      <p><%= link_to wiki.title, wiki %> <%= link_to "Edit", edit_wiki_page_path(wiki) %></p>
+    </div>
+  <% end %>
+</div>

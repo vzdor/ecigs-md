@@ -487,6 +487,13 @@ li#selected a {
   font-weight: bold;
 }
 
+#product-list .wiki {
+  width: 630px;
+  background-color: #fff19a;
+  padding: 5px 10px 10px 10px;
+  margin-top: 10px;
+}
+
 p.out-of-stock {
   color: red;
 }

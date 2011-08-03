@@ -18,7 +18,11 @@ module ApplicationHelper
   end
 
   def textilize(text)
-    RedCloth.new(auto_link(text)).to_html(:textile, :product_refs).html_safe unless text.blank?
+    RedCloth.new(auto_link(text)).to_html(:textile, :product_refs, :wiki).html_safe unless text.blank?
+  end
+
+  def wikify(text)
+    textilize(text)
   end
 
   def local_price(price, show_currency = false)

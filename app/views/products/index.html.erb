@@ -7,6 +7,15 @@
 <% end %>
 
 <div id="product-list">
+  <% if @wiki_page %>
+    <div class="wiki">
+      <%= wikify(@wiki_page.content) %>
+      <% if is_admin? %>
+        <p><%= link_to "Edit", edit_wiki_page_path(@wiki_page) %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <% @products.each do |product| %>
     <div class="product">
       <div class="photo"><%= link_to image_tag(product.photo.url(:thumb)), product %></div>
