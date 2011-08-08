@@ -598,3 +598,13 @@ p.out-of-stock {
 #wiki-pages .wiki-list {
   width: 100%;
 }
+
+/* prodcut mixture */
+
+#mixture-options .comp {
+  padding-top: 5px;
+}
+
+/* #mixture-options .comp .title {
+  font-weight: bold;
+} */
