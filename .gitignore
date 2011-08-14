@@ -3,5 +3,3 @@ tmp/*
 log/*
 public/system
 config/configatron/development.yml
-public/javascripts/all.js
-public/stylesheets/all.css
