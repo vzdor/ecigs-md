@@ -27,7 +27,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :price, :unless => :is_variation?
 
   validates_numericality_of :price, :greater_than => 0, :unless => :is_variation?
-  scope :top, where(:product_id => nil, :is_discontinued => false).order("position desc, created_at asc") do
+  scope :top, where(:product_id => nil, :is_discontinued => false).order("position desc, quantity > 0 desc, created_at asc") do
     def discontinued
       where(:is_discontinued => true)
     end
