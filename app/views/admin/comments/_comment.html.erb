@@ -1,9 +1,0 @@
-<div class="comment">
-  <div class="meta">
-    <strong>Автор:</strong> <%= comment.user.fullname %>, <%= comment.created_at.short %> - <%= link_to comment.commentable.title, comment.commentable %>
-    <p><%= link_to "Edit", edit_admin_comment_path(comment) %> <%= link_to "Delete", admin_comment_path(comment), :method => :delete, :confirm => "Are you sure?" %></p>
-  </div>
-  <div class="body">
-    <%= comment.content %>
-  </div>
-</div>
