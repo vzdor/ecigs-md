@@ -60,6 +60,8 @@ ru:
         password_confirmation: Подтвердите пароль
   views:
     pagination:
+      first: '<<'
+      last: '>>'
       next: Далее
       previous: Назад
   submit: Разместить заказ

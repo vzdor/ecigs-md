@@ -50,13 +50,25 @@
 	<!-- end div#sidebar -->
 
 	<div id="content">
+          <% if is_admin? %>
+            <div class="admin-tabs">
+              <%= link_to "Add product", new_product_path %>
+              <%= link_to "Disco. products", :discontinued => true %>
+              <%= link_to "Wiki", wiki_pages_path %>
+              <%= link_to "Add wiki", new_wiki_page_path %>
+              <%= link_to "Orders", admin_orders_path %>
+              <%= link_to "Comments", admin_comments_path %>
+            </div>
+            <div class="cut"></div>
+          <% end %>
+
           <% flash.each do |name, msg| %>
             <p class="<%= name %>"><%= h(msg) %></p>
           <% end %>
 
           <% if @show_title && content_for?(:title) %>
             <h2 id="page-title"><%= yield(:title) %></h2>
-            <% end %>
+          <% end %>
 
           <%= yield %>
 	</div>
@@ -68,7 +80,7 @@
     <div id="footer">
       <p>Электронные сигареты в Молдове.</p>
       <p><strong class="warning">ACHTUNG!</strong> Вам должно быть 18 лет или больше.</p>
-      <p id="legal">Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+      <p id="legal">Originally designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
     </div>
     <!-- end div#footer -->
   </div>

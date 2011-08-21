@@ -584,11 +584,12 @@ p.out-of-stock {
 
 /* wiki */
 
-.edit-add-links {
-  padding-bottom: 10px;
+.admin-tabs {
+  float: right;
+  padding-bottom: 5px;
 }
 
-.edit-add-links a {
+.admin-tabs a {
   margin-right: 15px;
 }
 
@@ -605,3 +606,38 @@ p.out-of-stock {
 /* #mixture-options .comp .title {
   font-weight: bold;
 } */
+
+#comments {
+  padding-top: 15px;
+}
+
+#comments .comment {
+  border: 1px solid #AA2808;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 10px;
+  width: 90%;
+  margin-bottom: 1em;
+}
+
+#comments .comment .meta {
+  padding-bottom: 1em;
+}
+
+#errors-for-comment span {
+  color: red;
+}
+
+#errors-for-comment ul {
+  margin-left: 5px;
+}
+
+#errors-for-comment li {
+  margin-left: 10px;
+  list-style: square;
+}
+
+#product-page .pagination {
+  font-size: 1em;
+}

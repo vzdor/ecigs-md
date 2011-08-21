@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
 
   layout 'products'
 
+  def show
+    @comments = @product.comments.recent.page params[:page]
+  end
+
   def index
     scope = Product.top
     scope = scope.discontinued if params[:discontinued]
@@ -17,7 +21,7 @@ class ProductsController < ApplicationController
     else
       @wiki_page = WikiPage.visible.find_by_slug("products-index")
     end
-    @products = scope.page(params[:page]).per(15)
+    @products = scope.page params[:page]
   end
 
   def new

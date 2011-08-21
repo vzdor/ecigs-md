@@ -60,5 +60,9 @@
     <%= textilize(@product.description) %>
   </div>
   <% end # /form %>
+
+  <% if @product.is_commentable? %>
+    <%= render :partial => "comments" %>
+  <% end %>
 </div>
 

@@ -2,10 +2,7 @@
 
 <div id="wiki">
   <% if is_admin? %>
-    <div class="edit-add-links">
-      <%= link_to "Back to Wiki pages", wiki_pages_path %> <%= link_to "Edit", edit_wiki_page_path(@wiki_page) %>
-    </div>
-
+    <%= link_to "Edit", edit_wiki_page_path(@wiki_page) %>
     <% unless @wiki_page.is_visible? %>
       <div class="notice">The page is not visible.</div>
     <% end %>

@@ -1,0 +1,11 @@
+<div id="new-comment">
+  <h3>Оставить отзыв</h3>
+  <div id="errors-for-comment" class="notice" style="display: none;"></div>
+  <%= form_for [commentable, Comment.new_by(current_user)], :remote => true do |f| %>
+    <p>Имя: <br />
+      <%= f.text_field :fullname, :style => "width: 100%" %></p>
+    <p>Комментарий:<br />
+      <%= f.text_area :content, :size => "80x10", :style => "width: 100%" %></p>
+    <%= submit_tag "Добавить" %>
+  <% end %>
+</div>

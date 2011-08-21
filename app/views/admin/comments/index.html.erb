@@ -1,0 +1,8 @@
+<% admin_title 'Отзывы' %>
+
+<div id="comments">
+  <%= render :partial => "comment", :collection => @comments %>
+</div>
+<%= paginate @comments %>
+<br />
+

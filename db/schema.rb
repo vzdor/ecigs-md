@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110803114351) do
+ActiveRecord::Schema.define(:version => 20110821130848) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(:version => 20110803114351) do
   end
 
   add_index "assets", ["attachable_id", "attachable_type"], :name => "index_assets_on_attachable_id_and_attachable_type"
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "score"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
 
   create_table "order_addresses", :force => true do |t|
     t.integer  "order_id",      :null => false
@@ -105,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20110803114351) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin"
+    t.string   "fullname"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

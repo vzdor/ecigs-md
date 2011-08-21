@@ -59,6 +59,7 @@ Ecigs::Application.routes.draw do
   resource :user
 
   resources :products do
+    resources :comments
     collection do
       get :tagged, :path => '/tagged/:tag', :to => "products#index"
     end
@@ -77,6 +78,7 @@ Ecigs::Application.routes.draw do
   namespace :admin do
     resources :products
     resources :orders
+    resources :comments
   end
 
   resources :wiki_pages

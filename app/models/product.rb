@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+  paginates_per 15
+
   acts_as_taggable
 
   has_attached_file :photo, :styles => {
@@ -15,6 +17,8 @@ class Product < ActiveRecord::Base
   # you should not delete any of the variations, or you get orders or cart messed up. Instead, just set quantity to 0
   has_many :variations, :class_name => 'Product', :order => 'title'
   accepts_nested_attributes_for :variations, :reject_if => proc { |attrs| attrs['title'].blank? && attrs['quantity'].blank? }, :allow_destroy => true
+
+  has_many :comments, :as => :commentable
 
   validates_presence_of :title
 
@@ -89,5 +93,9 @@ class Product < ActiveRecord::Base
     p = self
     crumb << p.title while p = p.product
     crumb[0...2].reverse.join(": ")
+  end
+
+  def is_commentable?
+    true
   end
 end

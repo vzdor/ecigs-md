@@ -1,0 +1,13 @@
+<div id="comments">
+  <% if @comments.present? %>
+    <h3>Отзывы</h3>
+    <%= render :partial => "/comments/comment", :collection => @comments %>
+  <% end %>
+</div>
+
+<%= paginate @comments %>
+
+<% if user_signed_in? %>
+  <%= render :partial => "/comments/form", :locals => {:commentable => @product} %>
+<% end %>
+

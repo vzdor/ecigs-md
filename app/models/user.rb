@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :order_addresses
 
+  has_many :comments
+
   def display_name
     email.split('@').first + '@..'
   end
