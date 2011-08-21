@@ -12,3 +12,16 @@ function verifyVariationsQuantity()
     $("variations-quantity-notice").show(); // .highlight();
     return false;
 }
+
+function bindStars() {
+    var stars = $$("ul.rating a");
+    stars.each(function(a) {
+        Event.observe(a, 'click', function(e) {
+            var score = a.className.split("-").last();
+            $("comment_score").value = score;
+            $$("li.current-rating").last().setStyle({
+                width: score * 20 + "%"
+            });
+        });
+    });
+}

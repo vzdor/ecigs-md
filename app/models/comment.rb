@@ -9,7 +9,9 @@ class Comment < ActiveRecord::Base
 
   validates_presence_of :fullname
 
-  attr_accessible :content, :fullname
+  validates_numericality_of :score, :less_than => 6, :greater_than_or_equal_to => 0
+
+  attr_accessible :content, :fullname, :score
 
   attr_accessor :fullname
 

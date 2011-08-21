@@ -4,6 +4,8 @@
   <%= form_for [commentable, Comment.new_by(current_user)], :remote => true do |f| %>
     <p>Имя: <br />
       <%= f.text_field :fullname, :style => "width: 100%" %></p>
+    <%= f.hidden_field :score %>
+    Оценка: <%= star_select(:comment_score) %>
     <p>Комментарий:<br />
       <%= f.text_area :content, :size => "80x10", :style => "width: 100%" %></p>
     <%= submit_tag "Добавить" %>

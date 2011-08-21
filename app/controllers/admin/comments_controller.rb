@@ -9,7 +9,7 @@ class Admin::CommentsController < AdminController
     @comment.attributes = params[:comment]
     @comment.save!
     flash[:notice] = "Comment updated."
-    redirect_to @commentable
+    redirect_to commentable_path(@comment)
   end
 
   def destroy

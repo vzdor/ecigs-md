@@ -31,4 +31,10 @@ class ApplicationController < ActionController::Base
     @tab = :products
   end
 
+  helper_method :commentable_path
+
+  def commentable_path(comment)
+    polymorphic_path(comment.commentable, :anchor => "comment-#{comment.id}")
+  end
+
 end

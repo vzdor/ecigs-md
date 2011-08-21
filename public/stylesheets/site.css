@@ -612,7 +612,7 @@ p.out-of-stock {
 }
 
 #comments .comment {
-  border: 1px solid #AA2808;
+  border: 1px solid #b9b9b9;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -622,7 +622,16 @@ p.out-of-stock {
 }
 
 #comments .comment .meta {
-  padding-bottom: 1em;
+  overflow: hidden;
+  width: 100%;
+}
+
+#comments .comment .meta .who {
+  float: left;
+}
+
+#comments .comment .meta .stars {
+  float: right;
 }
 
 #errors-for-comment span {
