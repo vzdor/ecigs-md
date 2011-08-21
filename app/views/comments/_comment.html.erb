@@ -1,6 +1,6 @@
 <div id="comment-<%= comment.id %>" class="comment">
   <div class="meta">
-    <div class="who">Автор: <b><%= comment.user.fullname %></b>, <%= comment.created_at.short_date %> <%= link_to '#', comment.commentable %></div>
+    <div class="who">Автор: <b><%= comment.user.fullname %></b>, <%= comment.created_at.short_date %> <%= link_to '#', commentable_path(comment) %></div>
     <% if comment.score > 0 %>
       <div class="stars">Оценка: <%= show_stars(comment.score) %></div>
     <% end %>

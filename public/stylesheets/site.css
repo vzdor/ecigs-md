@@ -634,6 +634,10 @@ p.out-of-stock {
   float: right;
 }
 
+fieldset {
+  border-width: 0;
+}
+
 #errors-for-comment span {
   color: red;
 }

@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def show_stars(score, inner = '')
-     content_tag(:span, :class => 'inline') do
+     content_tag(:div, :class => 'inline') do
       content_tag(:ul, :class => 'rating') do
         content_tag(:li, nil, :class => 'current-rating', :style => "width: #{score * 20}%;") + inner
       end
