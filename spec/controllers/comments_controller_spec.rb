@@ -18,6 +18,9 @@ describe CommentsController do
   end
 
   it "should render NotFound if is_commentable -> false" do
-
+    product = Factory(:product, :is_commentable => false)
+    proc do
+      xhr :post, :create, :product_id => product.id, :comment => {:score => 4, :content => "test test", :fullname => "test bob"}
+    end.should raise_error(ActiveRecord::RecordNotFound)
   end
 end

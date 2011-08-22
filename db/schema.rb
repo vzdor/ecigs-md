@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821130848) do
+ActiveRecord::Schema.define(:version => 20110822074801) do
 
   create_table "assets", :force => true do |t|
     t.string   "blob_file_name"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20110821130848) do
     t.boolean  "is_mixture",                                        :default => false
     t.boolean  "is_primary",                                        :default => false
     t.boolean  "is_default",                                        :default => false
+    t.boolean  "is_commentable",                                    :default => true
   end
 
   create_table "taggings", :force => true do |t|

@@ -94,8 +94,4 @@ class Product < ActiveRecord::Base
     crumb << p.title while p = p.product
     crumb[0...2].reverse.join(": ")
   end
-
-  def is_commentable?
-    true
-  end
 end

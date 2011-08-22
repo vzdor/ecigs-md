@@ -28,6 +28,9 @@
   <p><%= label :product, :is_mixture %>?
     <%= f.check_box :is_mixture %> <small>(Show Mixture Constructor view)</small></p>
 
+  <p><%= label :product, :is_commentable %>?
+    <%= f.check_box :is_commentable %></p>
+
   <h3>Assets</h3>
   <ul class="asset-list">
     <%= f.fields_for :assets do |ff| %>
