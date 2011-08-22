@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Comment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should set user.fullname" do
+    user = Factory(:user, :fullname => nil)
+    user.should_receive(:fullname=).with("bob")
+    user.should_receive(:save!)
+    Factory(:comment, :fullname => "bob", :user => user)
+  end
 end

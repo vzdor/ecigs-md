@@ -14,7 +14,7 @@ function verifyVariationsQuantity()
 }
 
 function bindStars() {
-    var stars = $$("ul.rating a");
+    var stars = $$("ul.star-rating a");
     stars.each(function(a) {
         Event.observe(a, 'click', function(e) {
             var score = a.className.split("-").last();

@@ -98,4 +98,11 @@ describe ProductsController do
     results.should_not be_nil
     results.first.id == product2.id
   end
+
+  it "should render show with comments" do
+    product = Factory(:product)
+    5.times { Factory(:comment, :commentable => product) }
+    get :index, :id => product.id
+    response.should be_success
+  end
 end

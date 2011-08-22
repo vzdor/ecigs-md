@@ -2,14 +2,14 @@
 * Style by Rogie http://www.komodomedia.com/blog/2007/01/css-star-rating-redux/
 */
 
-.rating,
-.rating a:hover,
-.rating a:active,
-.rating a:focus,
-.rating .current-rating {
+.star-rating,
+.star-rating a:hover,
+.star-rating a:active,
+.star-rating a:focus,
+.star-rating .current-rating {
   background: url(/images/stars.gif) left -1000px repeat-x;
 }
-.rating {
+.star-rating {
   position: relative;
   width: 125px;
   height: 25px;
@@ -19,11 +19,11 @@
   padding: 0;
   background-position: left top;
 }
-.rating li {
+.star-rating li {
   display: inline;
 }
-.rating a,
-.rating .current-rating {
+.star-rating a,
+.star-rating .current-rating {
   position: absolute;
   top: 0;
   left: 0;
@@ -34,32 +34,32 @@
   overflow: hidden;
   border: none;
 }
-.rating a:hover,
-.rating a:active,
-.rating a:focus {
+.star-rating a:hover,
+.star-rating a:active,
+.star-rating a:focus {
   background-position: left bottom;
 }
-.rating a.star-1 {
+.star-rating a.star-1 {
   width: 20%;
   z-index: 6;
 }
-.rating a.star-2 {
+.star-rating a.star-2 {
   width: 40%;
   z-index: 5;
 }
-.rating a.star-3 {
+.star-rating a.star-3 {
   width: 60%;
   z-index: 4;
 }
-.rating a.star-4 {
+.star-rating a.star-4 {
   width: 80%;
   z-index: 3;
 }
-.rating a.star-5 {
+.star-rating a.star-5 {
   width: 100%;
   z-index: 2;
 }
-.rating .current-rating {
+.star-rating .current-rating {
   z-index: 1;
   background-position: left center;
 }
