@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <div class="body">
-    <%= comment.content %>
+    <%= simple_comment_format comment.content %>
   </div>
 
   <% if is_admin? %>
