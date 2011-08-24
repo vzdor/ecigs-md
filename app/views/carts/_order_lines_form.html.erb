@@ -31,7 +31,7 @@
         <td><%= link_to h(product.title), product_path(product) %>
           <% if product.is_mixture? %>
             <% ol.products.each do |p| %>
-              <br /><%= h(p.variation_crumb) %>
+              <br /><%= p.has_variations? ? h(p.variation_crumb) : h(p.title) %>
             <% end %>
           <% elsif ol.product.is_variation? %>
             <br /><%= h(ol.product.title) %>
