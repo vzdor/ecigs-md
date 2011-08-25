@@ -654,3 +654,17 @@ fieldset {
 #product-page .pagination {
   font-size: 1em;
 }
+
+.add {
+  background: url(/images/add.gif) no-repeat left center;
+}
+
+.remove {
+  background: url(/images/remove.gif) no-repeat left center;
+}
+
+.add, .remove {
+  margin-left: 6px;
+  cursor: pointer;
+  padding: 0px 8px 0px 8px;
+}

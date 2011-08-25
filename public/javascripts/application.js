@@ -25,3 +25,15 @@ function bindStars() {
         });
     });
 }
+
+function bindAddsRemoves() {
+    $$("span.add,span.remove").each(function(ele) {
+        Event.observe(ele, 'click', function(e) {
+            var input = ele.up().select("input[type=\"text\"]").first();
+            var v = Number(input.value);
+            if (v <= 0 && ele.className == "remove")
+                return false;
+            input.value = v + (ele.className == "add" ? 1 : -1);
+        });
+    });
+}
