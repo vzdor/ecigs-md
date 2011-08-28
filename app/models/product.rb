@@ -38,7 +38,7 @@ class Product < ActiveRecord::Base
     end
   end # Without variations and discontinued
 
-  scope :in_stock, top.where("quantity > 0")
+  scope :in_stock, where("quantity > 0")
 
   scope :discontinued, top.where(:is_discontinued => true)
 
