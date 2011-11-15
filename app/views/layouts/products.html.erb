@@ -4,7 +4,7 @@
       <h3><%= t(:products) %></h3>
       <ul>
         <% @tags.each do |tag| %>
-          <li <%= 'id="selected"'.html_safe if params[:tag] == tag.name %>><%= link_to h(tag.name) + " (#{tag.count})", tagged_products_path(tag.name) %></li>
+          <li <%= 'id="selected"'.html_safe if params[:tag] == tag.name %>><%= link_to h(tag.name), tagged_products_path(tag.name) %></li>
         <% end %>
       </ul>
     </li>
