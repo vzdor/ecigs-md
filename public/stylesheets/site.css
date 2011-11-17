@@ -603,9 +603,9 @@ p.out-of-stock {
   padding-top: 5px;
 }
 
-/* #mixture-options .comp .title {
+#mixture-options .comp .title {
   font-weight: bold;
-} */
+}
 
 #comments {
   padding-top: 15px;

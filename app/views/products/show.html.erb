@@ -38,15 +38,6 @@
   </ul>
   <div class="cut"></div>
 
-  <% if @product.assets.present? %>
-    <div class="assets">
-      <% @product.assets.each do |asset| %>
-        <div class="photo"><%= link_to image_tag(asset.blob.url(:thumb)), asset.blob.url(:large), :rel => "lightbox[photos]" %></div>
-      <% end %>
-    </div>
-  <% end %>
-  <div class="cut"></div>
-
   <% if @product.has_variations? %>
     <% if @product.is_mixture? %>
       <%= render :partial => "mixture", :locals => {:f => f} %>
@@ -60,6 +51,15 @@
     <%= textilize(@product.description) %>
   </div>
   <% end # /form %>
+
+  <% if @product.assets.present? %>
+    <div class="assets">
+      <% @product.assets.each do |asset| %>
+        <div class="photo"><%= link_to image_tag(asset.blob.url(:thumb)), asset.blob.url(:large), :rel => "lightbox[photos]" %></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="cut"></div>
 
   <% if @product.is_commentable? %>
     <%= render :partial => "comments" %>
