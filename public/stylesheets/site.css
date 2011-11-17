@@ -655,6 +655,10 @@ fieldset {
   font-size: 1em;
 }
 
+#product-page .assets {
+  margin-top: 1em;
+}
+
 .add {
   background: url(/images/add.gif) no-repeat left center;
 }
