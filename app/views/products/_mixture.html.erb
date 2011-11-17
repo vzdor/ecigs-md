@@ -5,10 +5,10 @@
         <% if product.has_variations? %>
           <span class="title"><%= h(product.title) %></span>:
           <% default = product.variations.in_stock.detect { |v| v.is_default? } %>
-          <%= ff.select(:product_ids, product.variations.in_stock.map { |p| [p.title + (p.price.present? && p.price > 0 ? " + #{local_price(p.price, true)}" : ""), p.id] }, {:selected => default ? default.id : nil}, :name => "order[order_lines_attributes][0][product_ids][]") %>
+          <%= ff.select(:product_ids, product.variations.in_stock.map { |p| [p.title + (p.price.present? && p.price > 0 ? " +#{local_price(p.price, true)}" : ""), p.id] }, {:selected => default ? default.id : nil}, :name => "order[order_lines_attributes][0][product_ids][]") %>
         <% else %>
           <label for="product-<%= product.id %>"><%= h(product.title) %>?</label>
-          <input id="product-<%= product.id %>" name="order[order_lines_attributes][0][product_ids][]" type="checkbox" value="<%= product.id %>" /> <%= product.price > 0 ? "(+ #{local_price(product.price, true)})" : "" %>
+          <input id="product-<%= product.id %>" name="order[order_lines_attributes][0][product_ids][]" type="checkbox" value="<%= product.id %>" /> <%= product.price > 0 ? "(+#{local_price(product.price, true)})" : "" %>
         <% end %>
       </div>
     <% end %>

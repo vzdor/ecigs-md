@@ -42,7 +42,7 @@ class OrderLine < ActiveRecord::Base
   end
 
   def products
-    @products ||= Product.find(product_ids)
+    @products ||= product_ids.present? ? Product.find(product_ids) : []
   end
 
   serialize :optional

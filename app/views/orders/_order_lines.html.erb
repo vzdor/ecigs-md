@@ -14,7 +14,7 @@
       <% end %>
       <td><%= ol.product.id %></td>
       <td><%= link_to h(product.title), product %>
-        <% if ol.product.is_mixture? %>
+        <% if ol.products.present? %>
           <% ol.products.each do |p| %>
             <br /><%= p.has_variations? ? h(p.variation_crumb) : h(p.title) %>
           <% end %>
