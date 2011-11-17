@@ -100,7 +100,7 @@ class Product < ActiveRecord::Base
     title.to_i
   end
 
-  def sorted_variations
-    numeric_sort? ? variations.sort_by(&:numeric_title) : variations.sort_by(&:title)
+  def sorted_variations(v = variations)
+    numeric_sort? ? v.sort_by(&:numeric_title) : v.sort_by(&:title)
   end
 end
