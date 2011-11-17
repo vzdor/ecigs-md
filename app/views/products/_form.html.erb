@@ -31,6 +31,9 @@
   <p><%= label :product, :is_commentable %>?
     <%= f.check_box :is_commentable %></p>
 
+  <p><%= label :product, :numeric_sort %>?
+    <%= f.check_box :numeric_sort %></p>
+
   <h3>Assets</h3>
   <ul class="asset-list">
     <%= f.fields_for :assets do |ff| %>

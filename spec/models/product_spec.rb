@@ -76,4 +76,13 @@ describe Product do
     product.summary = 'test summary'
     product.short_summary.should == product.summary
   end
+
+  it "sorted_variations" do
+    product = Factory(:product)
+    v10 = product.variations.build(:title => "10", :quantity => 10)
+    v5 = product.variations.build(:title => "5", :quantity => 10)
+    product.sorted_variations.should == [v10, v5]
+    product.numeric_sort = true
+    product.sorted_variations.should == [v5, v10]
+  end
 end

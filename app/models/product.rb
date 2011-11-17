@@ -95,4 +95,12 @@ class Product < ActiveRecord::Base
     crumb << p.title while p = p.product
     crumb[0...2].reverse.join(": ")
   end
+
+  def numeric_title
+    title.to_i
+  end
+
+  def sorted_variations
+    numeric_sort? ? variations.sort_by(&:numeric_title) : variations.sort_by(&:title)
+  end
 end

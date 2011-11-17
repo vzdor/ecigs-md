@@ -10,7 +10,7 @@
           <% end %>
           <th><%= t(:quantity) %></th>
         </tr>
-        <% @product.variations.sort_by(&:title).each do |product| %>
+        <% @product.sorted_variations.each do |product| %>
           <tr>
             <td><%= h(product.title) %></td>
             <% if product.in_stock? || @product.is_producible? %>
