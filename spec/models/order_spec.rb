@@ -8,12 +8,20 @@ describe Order do
   end
 
   it "should include_delivery by default" do
+    Order.stub!(:delivery_off?).and_return(false)
     order = Order.new
     order.include_delivery.should == true
   end
 
+  it "should not include_delivery if delivery_off?" do
+    Order.stub!(:delivery_off?).and_return(true)
+    order = Order.new
+    order.include_delivery.should == false
+  end
+
   describe "total_with_delivery" do
     it "should include delivery cost" do
+      Order.stub!(:delivery_off?).and_return(false)
       order = Order.new
       order.total_with_delivery.should == Order.delivery_cost
     end

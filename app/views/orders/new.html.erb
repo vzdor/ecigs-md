@@ -7,21 +7,8 @@
 
   <%= form_for @order do |f| %>
     <%= hidden_field_tag :dont_submit, nil %>
-    <%= f.check_box :include_delivery, :onclick => "$('dont_submit').value = true; this.form.submit();" %> <%= label :order, :include_delivery %>
-    <p><%= link_to t(:more_on_delivery), delivery_home_path %></p>
-    <% if @order.include_delivery? %>
-      <div id="delivery-address">
-        <h3><%= t(:delivery_address) %></h3>
-        <%= f.fields_for :order_address do |ff| %>
-          <%= label :order, :street %>: *<br />
-          <%= ff.text_field :street, :style => "width: 100%" %><br />
-          <%= label :order, :phone_number %>: *<br />
-          <%= ff.text_field :phone_number, :size => 10 %><br />
-          <%= label :order, :phone_number2 %>:<br />
-          <%= ff.text_field :phone_number2, :size => 10 %><br />
-        <% end %>
-      </div>
-      <p><small>* <%= t(:required_fields) %>.</small></p>
+    <% unless Order.delivery_off? %>
+      <% render :partial => "delivery", :locals => {:f => f} %>
     <% end %>
     <p><%= label :order, :notes %>:<br />
       <%= f.text_area :notes, :rows => 5, :style => "width: 100%" %></p>

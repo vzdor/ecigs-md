@@ -11,6 +11,8 @@ class Order < ActiveRecord::Base
 
   after_update :set_product_quantity
 
+  after_initialize :delivery_off
+
   # validates_presence_of :order_address, :if => :include_delivery?
 
   class Status
@@ -67,9 +69,17 @@ class Order < ActiveRecord::Base
     def delivery_cost
       25.0
     end
+
+    def delivery_off?
+      true
+    end
   end
 
   protected
+
+  def delivery_off
+    self.include_delivery = false if new_record? && self.class.delivery_off?
+  end
 
   def set_product_quantity
     if status_changed?
