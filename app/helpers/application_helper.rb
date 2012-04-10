@@ -45,5 +45,13 @@ module ApplicationHelper
       end
     end
   end
+
+  def month_year_select_tag(field)
+    now = Time.now - 1.month
+    month_field = "#{field}_month"
+    year_field = "#{field}_year"
+    select_tag(month_field, options_for_select((1...12).to_a, params[month_field] || now.month.month)) + "&nbsp;".html_safe +
+      select_tag(year_field, options_for_select(((now.year - 5)...(now.year + 5)).to_a, params[year_field] || now.year))
+  end
 end
 

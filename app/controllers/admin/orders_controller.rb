@@ -5,6 +5,15 @@ class Admin::OrdersController < AdminController
     @orders = Order.recent.page(params[:page]).per(25)
   end
 
+  def report
+    if (month = params[:from_month]) && (year = params[:from_year])
+      from_date = Date.parse("#{year}/#{month}")
+    else
+      from_date = 1.month.ago
+    end
+    @order_lines = OrderLine.select("order_lines.*, SUM(order_lines.quantity) AS sold, AVG(order_lines.unit_price) AS avg_unit_price").where("order_lines.created_at > ? ", from_date).group("product_id")
+  end
+
   def update
     @order.send(:attributes=, params[:order], false)
     if @order.save

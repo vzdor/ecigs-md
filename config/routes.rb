@@ -77,7 +77,11 @@ Ecigs::Application.routes.draw do
 
   namespace :admin do
     resources :products
-    resources :orders
+    resources :orders do
+      collection do
+        get :report
+      end
+    end
     resources :comments
   end
 
