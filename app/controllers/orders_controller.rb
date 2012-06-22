@@ -18,7 +18,9 @@ class OrdersController < ApplicationController
     if params[:dont_submit].blank? && @order.save
       reset_cart
       flash[:notice] = t(:order_submitted)
-      UserMailer.new_order_email(@order).deliver
+      unless @order.user.is_admin?
+        UserMailer.new_order_email(@order).deliver
+      end
       redirect_to @order
     else
       @order.order_address ||= current_user.address_for_order
