@@ -70,5 +70,12 @@ describe OrdersController do
       UserMailer.should_not_receive(:new_order_email)
       post :create, :order => {:order_address_attributes => {:street => '123', :phone_number => '123'}, :notes => 'test'}
     end
+
+    it "should redirect to admin order view" do
+      order = Factory.build(:order)
+      session[:cart] = order.for_cart
+      post :create, :order => {:order_address_attributes => {:street => '123', :phone_number => '123'}, :notes => 'test'}
+      response.should redirect_to(admin_order_path(Order.last))
+    end
   end
 end
