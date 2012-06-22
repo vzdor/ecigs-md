@@ -28,5 +28,17 @@
     <br />
 
     <%= submit_tag 'Update', :class => "button" %>
+    <%= submit_tag 'Delivered', :class => "button", :id => 'submit-delivered' %>
   <% end %>
 </div>
+
+<script type="text/javascript">
+    $('submit-delivered').observe('click', function(event) {
+        $$('#order_status option').each(function(ele) {
+            ele.selected = false;
+           if (ele.value == 2) {
+                ele.selected = true;
+            }
+        });
+    });
+</script>
