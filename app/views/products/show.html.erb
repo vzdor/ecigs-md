@@ -19,8 +19,8 @@
     <% unless @product.price_varies? %>
       <li class="price"><%= t(:price) %>: <%= product_price(@product) %></li>
     <% end %>
-    <% unless @product.has_variations? %>
-      <% if @product.in_stock? %>
+    <% if @product.in_stock? %>
+      <% unless @product.has_variations? %>
         <% unless @product.is_producible? %>
           <li><%= t(:available) %>: <%= @product.quantity %></li>
         <% end %>
@@ -31,14 +31,14 @@
             <%= submit_tag t(:add_to_cart), :class => "button cart-add" %>
           <% end %>
         </li>
-      <% else %>
-        <%= t(:out_of_stock) %>.
       <% end %>
+    <% else %>
+      <%= t(:out_of_stock) %>.
     <% end %>
   </ul>
   <div class="cut"></div>
 
-  <% if @product.has_variations? %>
+  <% if @product.has_variations? && !@product.variations.in_stock.empty? %>
     <% if @product.is_mixture? %>
       <%= render :partial => "mixture", :locals => {:f => f} %>
     <% else %>
