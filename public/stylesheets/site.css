@@ -672,3 +672,7 @@ fieldset {
   cursor: pointer;
   padding: 0px 8px 0px 8px;
 }
+
+#orders-report tr td {
+  padding-bottom: 1em;
+}

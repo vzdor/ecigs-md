@@ -3,12 +3,13 @@
   <%= submit_tag 'Submit' %>
 <% end %>
 
-<table>
+<table id="orders-report">
   <tr>
     <th width="2%">#</th>
     <th><%= t(:title) %></th>
     <th width="15%"><%= t(:quantity) %></th>
     <th width="15%"><%= t(:unit_price) %> (avg)</th>
+    <th>Total</th>
   </tr>
   <% @order_lines.each do |ol| %>
     <tr>
@@ -28,6 +29,7 @@
       </td>
       <td><%= ol.sold %></td>
       <td><%= ol.avg_unit_price %></td>
+      <td><%= ol.total %></td>
     </tr>
   <% end %>
 </table>
