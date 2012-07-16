@@ -673,6 +673,10 @@ fieldset {
   padding: 0px 8px 0px 8px;
 }
 
-#orders-report tr td {
+#orders-report table {
+  padding-top: 2em;
+}
+
+#orders-report table tr td {
   padding-bottom: 1em;
 }

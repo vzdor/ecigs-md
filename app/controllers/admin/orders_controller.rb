@@ -12,6 +12,7 @@ class Admin::OrdersController < AdminController
       from_date = 1.month.ago
     end
     @order_lines = OrderLine.select("order_lines.*, SUM(order_lines.quantity) AS sold, AVG(order_lines.unit_price) AS avg_unit_price, SUM(order_lines.unit_price) AS total").where("order_lines.created_at > ? ", from_date).group("product_id")
+    @order_lines.sort! { |ol1, ol2| ol1.product.title <=> ol2.product.title }
   end
 
   def update

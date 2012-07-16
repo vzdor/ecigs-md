@@ -1,35 +1,35 @@
-<%= form_tag(report_admin_orders_path, :method => :get) do %>
-  From: <%= month_year_select_tag 'from' %>
-  <%= submit_tag 'Submit' %>
-<% end %>
-
-<table id="orders-report">
-  <tr>
-    <th width="2%">#</th>
-    <th><%= t(:title) %></th>
-    <th width="15%"><%= t(:quantity) %></th>
-    <th width="15%"><%= t(:unit_price) %> (avg)</th>
-    <th>Total</th>
-  </tr>
-  <% @order_lines.each do |ol| %>
-    <tr>
-      <% product = ol.product %>
-      <% if !product.is_mixture? && ol.product.is_variation? %>
-        <% product = product.product %>
-      <% end %>
-      <td><%= ol.product.id %></td>
-      <td><%= link_to h(product.title), product %>
-        <% if ol.products.present? %>
-          <% ol.products.each do |p| %>
-            <br /><%= p.has_variations? ? h(p.variation_crumb) : h(p.title) %>
-          <% end %>
-        <% elsif ol.product.is_variation? %>
-          <br /><%= h(ol.product.title) %>
-        <% end %>
-      </td>
-      <td><%= ol.sold %></td>
-      <td><%= ol.avg_unit_price %></td>
-      <td><%= ol.total %></td>
-    </tr>
+<div id="orders-report">
+  <%= form_tag(report_admin_orders_path, :method => :get) do %>
+    From: <%= month_year_select_tag 'from' %>
+    <%= submit_tag 'Submit' %>
   <% end %>
-</table>
+
+  <table>
+    <tr>
+      <th width="2%">#</th>
+      <th><%= t(:title) %></th>
+      <th>Qty * Avg price</th>
+      <th>Total</th>
+    </tr>
+    <% @order_lines.each do |ol| %>
+      <tr>
+        <% product = ol.product %>
+        <% if !product.is_mixture? && ol.product.is_variation? %>
+          <% product = product.product %>
+        <% end %>
+        <td><%= ol.product.id %></td>
+        <td><%= link_to h(product.title), product %>
+          <% if ol.products.present? %>
+            <% ol.products.each do |p| %>
+              <br /><%= p.has_variations? ? h(p.variation_crumb) : h(p.title) %>
+            <% end %>
+          <% elsif ol.product.is_variation? %>
+            <br /><%= h(ol.product.title) %>
+          <% end %>
+        </td>
+        <td><%= ol.sold %> * <%= ol.avg_unit_price %></td>
+        <td><%= ol.total %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
