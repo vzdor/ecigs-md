@@ -24,7 +24,7 @@ input {
 }
 
 h1, h2, h3 {
-	color: #AA2808;
+	color: #5b5b5b;
 }
 
 h3 {
@@ -78,7 +78,7 @@ a {
 
 a:hover {
 	text-decoration: none;
-	color: #FF0000;
+	color: #5b5b5b;
 }
 
 th {
@@ -289,7 +289,7 @@ th {
 
 .post .title a {
 	padding: 4px 35px 4px 15px;
-	background: #FF0000;
+	background: #5b5b5b;
 	text-decoration: none;
 	font-weight: normal;
 	color: #FFFFFF;
@@ -372,7 +372,7 @@ th {
 #sidebar a {
 	border: none;
 	text-decoration: none;
-	color: #FF0000;
+	color: #5b5b5b;
 }
 
 #sidebar a:hover {
