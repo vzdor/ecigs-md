@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://gemcutter.org'
 
-gem 'rails', '3.0.4'
+gem 'rails', '3.0.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -46,8 +46,14 @@ gem 'configatron'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
+  gem 'capybara'
 end
+
+# group :development do
+#   gem 'meta_request'
+# end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'capybara'
 end

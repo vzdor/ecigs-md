@@ -26,7 +26,7 @@ class CartsController < ApplicationController
   end
 
   def stop_new_orders
-    flash[:error] = "Извините, больше не принимаю заказы."
+    flash[:notice] = "Извините, больше не принимаю заказы."
     redirect_to root_path
   end
 end
